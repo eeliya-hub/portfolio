@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+/* CRITICAL: Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+      Roboto, Helvetica, Arial, sans-serif;
+    background-color: #dde0ed;
+    color: #0f172a;
+    transition: background-color 0.5s, color 0.5s;
+  }
+
+  .dark body {
+    background-color: #08080f;
+    color: #f0f0f5;
+  }
+
+  ::selection {
+    background: rgba(99, 102, 241, 0.22);
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.12); border-radius: 3px; }
+  .dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); }
+
+
+}
+
+/* ─── Cursor glow (RAF-driven blob) ─── */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 1;
+}
+
+/* ─── Blink animation for typing cursor ─── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Background orb animations ─── */
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -40px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(40px, 30px) scale(1.02); }
+}
+@keyframes float-orb-reverse {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-40px, 30px) scale(0.97); }
+  50% { transform: translate(30px, -20px) scale(1.04); }
+  75% { transform: translate(-20px, -40px) scale(0.98); }
+}
+@keyframes float-orb-slow {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(50px, -30px) scale(1.06); }
+  66% { transform: translate(-40px, 40px) scale(0.94); }
+}
+@keyframes float-orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(-30px, 50px) scale(0.96) rotate(3deg); }
+  50% { transform: translate(40px, -20px) scale(1.03) rotate(-2deg); }
+  75% { transform: translate(-50px, -30px) scale(0.98) rotate(1deg); }
+}
+@keyframes spark {
+  0% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0); }
+}
+@keyframes rotate3d {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+@keyframes rotate3d-reverse {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(-360deg) rotateY(180deg) rotateZ(360deg); }
+}
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(4deg); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.orb-1 { animation: float-orb 18s ease-in-out infinite; }
+.orb-2 { animation: float-orb-reverse 22s ease-in-out infinite; }
+.orb-3 { animation: float-orb-slow 26s ease-in-out infinite; }
+.orb-4 { animation: float-orb 20s ease-in-out infinite reverse; }
+.orb-5 { animation: float-orb-reverse 30s ease-in-out infinite; }
+.orb-6 { animation: float-orb-drift 24s ease-in-out infinite; }
+.orb-7 { animation: float-orb-slow 28s ease-in-out infinite reverse; }
+
+/* ─── Glass utility classes ─── */
+.glass {
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.dark .glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 6px 32px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.dark .glass-strong {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 6px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+.dark .glass-subtle {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(12px) saturate(1.3);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Glass with iridescent shimmer — used sparingly */
+.glass-iridescent {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(200, 210, 255, 0.4) 25%,
+    rgba(240, 200, 255, 0.35) 50%,
+    rgba(200, 240, 255, 0.4) 75%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  background-size: 200% 200%;
+  animation: shimmer 8s ease-in-out infinite;
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 32px rgba(99, 102, 241, 0.05);
+}
+.dark .glass-iridescent {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.06) 0%,
+    rgba(168, 85, 247, 0.05) 25%,
+    rgba(236, 72, 153, 0.04) 50%,
+    rgba(6, 182, 212, 0.05) 75%,
+    rgba(99, 102, 241, 0.06) 100%
+  );
+  background-size: 200% 200%;
+  animation: shimmer 8s ease-in-out infinite;
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Sparks ─── */
+.spark {
+  position: absolute; border-radius: 50%; pointer-events: none;
+}
+.spark-1  { width: 4px; height: 4px; animation: spark 3s ease-in-out infinite; }
+.spark-2  { width: 3px; height: 3px; animation: spark 4s ease-in-out infinite 1.2s; }
+.spark-3  { width: 5px; height: 5px; animation: spark 3.5s ease-in-out infinite 0.6s; }
+.spark-4  { width: 3px; height: 3px; animation: spark 5s ease-in-out infinite 2s; }
+.spark-5  { width: 4px; height: 4px; animation: spark 4.5s ease-in-out infinite 0.3s; }
+.spark-6  { width: 3px; height: 3px; animation: spark 3.8s ease-in-out infinite 1.8s; }
+.spark-7  { width: 5px; height: 5px; animation: spark 4.2s ease-in-out infinite 0.9s; }
+.spark-8  { width: 3px; height: 3px; animation: spark 3.3s ease-in-out infinite 2.5s; }
+.spark-9  { width: 4px; height: 4px; animation: spark 3.6s ease-in-out infinite 1.5s; }
+.spark-10 { width: 3px; height: 3px; animation: spark 4.8s ease-in-out infinite 0.8s; }
+
+/* ─── 3D objects ─── */
+.scene-3d {
+  perspective: 800px;
+  pointer-events: none;
+}
+.rotate-3d {
+  animation: rotate3d 20s linear infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.rotate-3d-reverse {
+  animation: rotate3d-reverse 28s linear infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ─── Tinted glass for floating 3D objects — NO backdrop-filter for performance ─── */
+.glass-object {
+  background: rgba(100, 90, 180, 0.18);
+  border: 1px solid rgba(90, 80, 170, 0.30);
+  box-shadow: 0 2px 12px rgba(80, 60, 160, 0.12);
+}
+.dark .glass-object {
+  background: rgba(120, 100, 160, 0.18);
+  border: 1px solid rgba(140, 120, 180, 0.2);
+  box-shadow: 0 2px 12px rgba(80, 60, 140, 0.15);
+}
+
+/* ─── Hide scrollbar but keep scroll ─── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
