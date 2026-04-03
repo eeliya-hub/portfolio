@@ -1,3 +1,5 @@
+const base = import.meta.env.BASE_URL;
+
 export const navigationItems = [
   { id: 'home', label: 'Home', hint: 'System overview' },
   { id: 'about', label: 'About', hint: 'Profile frame' },
@@ -102,18 +104,18 @@ export const portfolioData = {
         'AI-assisted travel support with backend proxying to protect external API keys',
       ],
       thumbnail:
-        '/projectImages/traversethumb.png',
+        `${base}projectImages/traversethumb.png`,
       gallery: [
-        '/projectImages/Traverse1.png',
-        '/projectImages/Traverse2.png',
-        '/projectImages/Traverse3.png',
-        '/projectImages/Traverse4.png',
-        '/projectImages/Traverse5.png',
+        `${base}projectImages/Traverse1.png`,
+        `${base}projectImages/Traverse2.png`,
+        `${base}projectImages/Traverse3.png`,
+        `${base}projectImages/Traverse4.png`,
+        `${base}projectImages/Traverse5.png`,
       ],
       actions: [
         { label: 'Live Demo', href: 'https://eeliya-hub.github.io/traverse-web/' },
         { label: 'GitHub', href: null },
-        { label: 'Doc', href: '/docs/Traverse Doc.pdf', download: true },
+        { label: 'Doc', href: `${base}docs/Traverse Doc.pdf`, download: true },
       ],
     },
     {
@@ -131,16 +133,16 @@ export const portfolioData = {
         'Blind bidding system with winner selection, protected routes, and documented API endpoints',
       ],
       thumbnail:
-        '/projectImages/alumthumb.png',
+        `${base}projectImages/alumthumb.png`,
       gallery: [
-        '/projectImages/Alum1.png',
-        '/projectImages/Alum2.png',
-        '/projectImages/Alum3.png',
+        `${base}projectImages/Alum1.png`,
+        `${base}projectImages/Alum2.png`,
+        `${base}projectImages/Alum3.png`,
       ],
       actions: [
         { label: 'API Preview', href: null },
         { label: 'GitHub', href: null },
-        { label: 'Doc', href: '/docs/Alumni API.pdf', download: true },
+        { label: 'Doc', href: `${base}docs/Alumni API.pdf`, download: true },
       ],
     },
     {
@@ -158,17 +160,17 @@ export const portfolioData = {
         'Trend visualisation that helps users review patterns in past health check responses',
       ],
       thumbnail:
-        '/projectImages/skythumb.png',
+        `${base}projectImages/skythumb.png`,
       gallery: [
-        '/projectImages/Sky1.png',
-        '/projectImages/Sky2.png',
-        '/projectImages/Sky3.png',
-        '/projectImages/Sky4.png',
+        `${base}projectImages/Sky1.png`,
+        `${base}projectImages/Sky2.png`,
+        `${base}projectImages/Sky3.png`,
+        `${base}projectImages/Sky4.png`,
       ],
       actions: [
         { label: 'Prototype', href: null },
         { label: 'GitHub', href: null },
-        { label: 'Doc', href: '/docs/Heath Check.pdf', download: true },
+        { label: 'Doc', href: `${base}docs/Heath Check.pdf`, download: true },
       ],
     },
     {
@@ -186,15 +188,15 @@ export const portfolioData = {
         'Saved location history that restores previously viewed places across sessions',
       ],
       thumbnail:
-        '/projectImages/weatherthumb.png',
+        `${base}projectImages/weatherthumb.png`,
       gallery: [
-        '/projectImages/Weather1.png',
-        '/projectImages/Weather2.png',
+        `${base}projectImages/Weather1.png`,
+        `${base}projectImages/Weather2.png`,
       ],
       actions: [
         { label: 'Preview', href: null },
         { label: 'GitHub', href: null },
-        { label: 'Doc', href: '/docs/Weather App.pdf', download: true },
+        { label: 'Doc', href: `${base}docs/Weather App.pdf`, download: true },
       ],
     },
     {
@@ -212,16 +214,16 @@ export const portfolioData = {
         'Client-side PDF report generation to compare predictions against actual results',
       ],
       thumbnail:
-        '/projectImages/premthumb.png',
+        `${base}projectImages/premthumb.png`,
       gallery: [
-        '/projectImages/PremPred1.png',
-        '/projectImages/PremPred2.png',
-        '/projectImages/PremPred3.png',
+        `${base}projectImages/PremPred1.png`,
+        `${base}projectImages/PremPred2.png`,
+        `${base}projectImages/PremPred3.png`,
       ],
       actions: [
         { label: 'Dashboard', href: null },
         { label: 'GitHub', href: null },
-        { label: 'Doc', href: '/docs/Prem Predictor.pdf', download: true },
+        { label: 'Doc', href: `${base}docs/Prem Predictor.pdf`, download: true },
       ],
     },
   ],
@@ -354,16 +356,16 @@ export const portfolioData = {
         value: 'eeliya-hub',
         note: 'Repositories and project code',
         href: 'https://github.com/eeliya-hub',
-        iconLight: '/projectImages/githublight.png',
-        iconDark: '/projectImages/githubdark.png',
+        iconLight: `${base}projectImages/githublight.png`,
+        iconDark: `${base}projectImages/githubdark.png`,
       },
       {
         label: 'LinkedIn',
         value: 'eeliya',
         note: 'Professional profile and network',
         href: 'https://www.linkedin.com/in/eeliya/',
-        iconLight: '/projectImages/linkedinLight.png',
-        iconDark: '/projectImages/linkedinDark.png',
+        iconLight: `${base}projectImages/linkedinLight.png`,
+        iconDark: `${base}projectImages/linkedinDark.png`,
       },
       {
         label: 'Location',

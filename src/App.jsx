@@ -22,7 +22,7 @@ const sectionList = [
 
 function getInitialTheme() {
   if (typeof window === 'undefined') return 'light';
-  return window.localStorage.getItem('eeliya-portfolio-theme') || 'light';
+  return window.localStorage.getItem('eeliya-portfolio-theme') || 'dark';
 }
 
 /* ─── Glow blob that follows cursor — no custom cursor replacement ─── */
