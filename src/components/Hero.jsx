@@ -9,10 +9,10 @@ const Hero = ({ onNavigate, portfolioData }) => {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-20 sm:px-10 lg:px-16 overflow-hidden">
       {/* Decorative glass shapes */}
-      <div className="absolute top-16 right-20 h-28 w-28 rounded-3xl rotate-12 glass opacity-30 dark:opacity-15 orb-1" />
-      <div className="absolute bottom-24 left-14 h-20 w-20 rounded-full glass opacity-25 dark:opacity-12 orb-2" />
-      <div className="absolute top-1/4 left-1/3 h-14 w-14 rounded-2xl rotate-45 glass opacity-20 dark:opacity-10 orb-3" />
-      <div className="absolute bottom-1/3 right-1/4 h-10 w-32 rounded-full glass opacity-18 dark:opacity-10 float-gentle" />
+      <div className="absolute top-16 right-20 h-28 w-28 rounded-3xl rotate-12 glass-object opacity-30 dark:opacity-15 orb-1" />
+      <div className="absolute bottom-24 left-14 h-20 w-20 rounded-full glass-object opacity-25 dark:opacity-12 orb-2" />
+      <div className="absolute top-1/4 left-1/3 h-14 w-14 rounded-2xl rotate-45 glass-object opacity-20 dark:opacity-10 orb-3" />
+      <div className="absolute bottom-1/3 right-1/4 h-10 w-32 rounded-full glass-object opacity-18 dark:opacity-10 float-gentle" />
 
       <div className="text-center max-w-2xl">
         {/* Status */}

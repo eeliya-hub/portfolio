@@ -96,7 +96,7 @@ export const portfolioData = {
       summary:
         'A cross-platform travel planning app that brings flight search, hotel search, itinerary building, budget tracking, and an AI travel assistant into one connected experience.',
       description:
-        'Traverse is my final year project — a cross-platform travel app that lets users search flights and hotels, build trip itineraries, track budgets, and use an AI travel assistant. A Firebase data layer and Node.js proxy backend handle storage, API security, and integrations.',
+        'Traverse is my final year project — a cross-platform travel app that lets users search flights and hotels, build trip itineraries, track budgets, and use an AI travel assistant. A Firebase data layer and Node.js proxy backend handle storage, API security, and integrations. Unfortunately, the flight and hotel search features are primarily non-functional due to the shutdown of the Amadeus API. The rest of the app is fully built and demonstrates the intended user experience. The app guides you with a demo set of search results when attempting to use the flight and hotel search features, allowing you to explore the itinerary building, budget tracking, and AI assistant functionality as originally designed.',
       tech: ['Flutter', 'Dart', 'Firebase', 'Node.js', 'Express', 'Google Places API', 'Amadeus API'],
       features: [
         'Flight and hotel search brought together in one app instead of separate planning tools',

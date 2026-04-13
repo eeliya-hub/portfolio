@@ -6,10 +6,11 @@ export function useTypewriter(text, speed = 80, startDelay = 300) {
 
   useEffect(() => {
     let i = 0;
+    let interval;
     setDisplayed('');
     setDone(false);
     const timeout = setTimeout(() => {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         i++;
         setDisplayed(text.slice(0, i));
         if (i >= text.length) {
@@ -17,9 +18,12 @@ export function useTypewriter(text, speed = 80, startDelay = 300) {
           setDone(true);
         }
       }, speed);
-      return () => clearInterval(interval);
     }, startDelay);
-    return () => clearTimeout(timeout);
+
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(interval);
+    };
   }, [text, speed, startDelay]);
 
   return { displayed, done };

@@ -109,6 +109,22 @@
 .orb-6 { animation: float-orb-drift 24s ease-in-out infinite; }
 .orb-7 { animation: float-orb-slow 28s ease-in-out infinite reverse; }
 
+.orb-1,
+.orb-2,
+.orb-3,
+.orb-4,
+.orb-5,
+.orb-6,
+.orb-7,
+.spark,
+.rotate-3d,
+.rotate-3d-reverse,
+.float-gentle {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 /* ─── Glass utility classes ─── */
 .glass {
   background: rgba(255, 255, 255, 0.58);
@@ -228,6 +244,24 @@
 .float-gentle {
   animation: float-gentle 6s ease-in-out infinite;
   will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-1,
+  .orb-2,
+  .orb-3,
+  .orb-4,
+  .orb-5,
+  .orb-6,
+  .orb-7,
+  .spark,
+  .rotate-3d,
+  .rotate-3d-reverse,
+  .float-gentle,
+  .animate-blink,
+  .glass-iridescent {
+    animation: none !important;
+  }
 }
 
 /* ─── Tinted glass for floating 3D objects — NO backdrop-filter for performance ─── */

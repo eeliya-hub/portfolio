@@ -30,8 +30,27 @@ function CursorGlow() {
   const glowRef = useRef(null);
   const pos = useRef({ x: -100, y: -100 });
   const glow = useRef({ x: -100, y: -100 });
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointer = window.matchMedia('(pointer: fine)');
+    const update = () => setEnabled(!reduceMotion.matches && finePointer.matches);
+
+    update();
+    reduceMotion.addEventListener('change', update);
+    finePointer.addEventListener('change', update);
+    return () => {
+      reduceMotion.removeEventListener('change', update);
+      finePointer.removeEventListener('change', update);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return undefined;
+
     const onMove = (e) => { pos.current.x = e.clientX; pos.current.y = e.clientY; };
     window.addEventListener('mousemove', onMove, { passive: true });
 
@@ -45,7 +64,9 @@ function CursorGlow() {
     };
     raf = requestAnimationFrame(tick);
     return () => { window.removeEventListener('mousemove', onMove); cancelAnimationFrame(raf); };
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
     <div ref={glowRef} className="cursor-glow hidden md:block">
