@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ExternalLink, FileText, FolderGit2, Play, X } from 'lucide-react';
+import { AlertTriangle, ExternalLink, FileText, FolderGit2, Play, X } from 'lucide-react';
 import ProjectCarousel from './ProjectCarousel';
 
 const base = import.meta.env.BASE_URL;
@@ -72,6 +72,7 @@ const getActionIcon = (label) => {
 
 const ProjectModal = ({ onClose, project }) => {
   const [hoveredAction, setHoveredAction] = useState(null);
+  const [showTravelDataWarning, setShowTravelDataWarning] = useState(false);
 
   useEffect(() => {
     if (!project) return;
@@ -79,6 +80,10 @@ const ProjectModal = ({ onClose, project }) => {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose, project]);
+
+  useEffect(() => {
+    setShowTravelDataWarning(false);
+  }, [project?.id]);
 
   return (
     <AnimatePresence>
@@ -122,6 +127,36 @@ const ProjectModal = ({ onClose, project }) => {
 
               {/* Action icon buttons */}
               <div className="flex items-center gap-2">
+                {project.id === 'traverse' && (
+                  <div className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowTravelDataWarning((prev) => !prev)}
+                      onMouseEnter={() => setHoveredAction('Travel Data Warning')}
+                      onMouseLeave={() => setHoveredAction(null)}
+                      className="flex h-9 w-9 items-center justify-center rounded-xl border border-amber-300/80 bg-amber-100/90 text-amber-700 shadow-[0_0_0_1px_rgba(251,191,36,0.35),0_0_18px_rgba(245,158,11,0.35)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:bg-amber-200/90 dark:border-amber-300/70 dark:bg-amber-500/25 dark:text-amber-300 [animation:pulse_4s_ease-in-out_infinite]"
+                      aria-label="Travel data warning"
+                      aria-expanded={showTravelDataWarning}
+                    >
+                      <AlertTriangle className="h-4 w-4" />
+                    </button>
+
+                    <AnimatePresence>
+                      {hoveredAction === 'Travel Data Warning' && !showTravelDataWarning && (
+                        <motion.span
+                          initial={{ opacity: 0, y: 4 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 4 }}
+                          className="absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-lg glass-strong px-2.5 py-1 text-[0.65rem] font-medium text-gray-700 dark:text-gray-300 shadow-lg z-50"
+                        >
+                          Travel Data Warning
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+
+                  </div>
+                )}
+
                 {project.actions.map((action) => {
                   const Icon = getActionIcon(action.label);
                   const Tag = action.href ? 'a' : 'button';
@@ -139,7 +174,7 @@ const ProjectModal = ({ onClose, project }) => {
                         {...linkProps}
                         onMouseEnter={() => setHoveredAction(action.label)}
                         onMouseLeave={() => setHoveredAction(null)}
-                        className={`flex h-9 w-9 items-center justify-center rounded-xl glass text-gray-500 transition-all duration-200 hover:scale-110 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 ${!action.href ? 'opacity-40 cursor-not-allowed' : ''}`}
+                        className={`flex h-9 w-9 items-center justify-center rounded-xl glass text-gray-500 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 ${!action.href ? 'opacity-40 cursor-not-allowed' : ''}`}
                       >
                         <Icon className="h-4 w-4" />
                       </Tag>
@@ -164,7 +199,7 @@ const ProjectModal = ({ onClose, project }) => {
                 <button
                   type="button"
                   onClick={onClose}
-                  className="flex h-8 w-8 items-center justify-center rounded-xl glass text-gray-500 transition-all duration-200 hover:scale-110 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-xl glass text-gray-500 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -190,7 +225,7 @@ const ProjectModal = ({ onClose, project }) => {
                       return (
                         <span
                           key={t}
-                          className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-200 transition-all duration-200 hover:scale-105"
+                          className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-gray-700 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-[0_0_0_1px_rgba(99,102,241,0.45),0_8px_24px_rgba(79,70,229,0.12)] dark:text-gray-200 dark:hover:shadow-[0_0_0_1px_rgba(129,140,248,0.4),0_8px_24px_rgba(129,140,248,0.14)]"
                           style={{
                             background: `linear-gradient(to bottom right, ${color}${isDark ? '18' : '12'}, ${color}${isDark ? '28' : '20'})`,
                             border: `1px solid ${isDark ? 'rgba(255,255,255,0.12)' : `${color}25`}`,
@@ -245,6 +280,59 @@ const ProjectModal = ({ onClose, project }) => {
                 </div>
               </div>
             </div>
+
+            <AnimatePresence>
+              {project.id === 'traverse' && showTravelDataWarning && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[80]"
+                >
+                  <button
+                    type="button"
+                    aria-label="Close travel data warning"
+                    onClick={() => setShowTravelDataWarning(false)}
+                    className="absolute inset-0 bg-black/60 backdrop-blur-md"
+                  />
+
+                  <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
+                    <motion.div
+                      initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 12, scale: 0.98 }}
+                      transition={{ duration: 0.22 }}
+                      className="relative z-[81] w-[min(92vw,36rem)] rounded-2xl glass-strong border border-amber-300/70 bg-gradient-to-br from-amber-50/95 via-yellow-50/95 to-orange-50/95 p-5 pr-12 shadow-2xl dark:border-amber-300/35 dark:from-amber-950/88 dark:via-amber-900/82 dark:to-orange-950/82"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setShowTravelDataWarning(false)}
+                        aria-label="Close alert"
+                        className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-lg border border-amber-300/70 bg-amber-100/80 text-amber-800 transition-all duration-200 hover:scale-105 hover:bg-amber-200/90 dark:border-amber-300/40 dark:bg-amber-500/20 dark:text-amber-200"
+                      >
+                        <X className="h-3.5 w-3.5" />
+                      </button>
+
+                      <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.2em] text-amber-700 dark:text-amber-300">
+                        Service Alert
+                      </p>
+                      <p className="mt-1 text-sm font-semibold leading-snug text-amber-900 dark:text-amber-100">
+                        Live travel search is currently unstable and will be permanently discontinued.
+                      </p>
+                      <p className="mt-2 text-xs leading-relaxed text-amber-900/90 dark:text-amber-100/90">
+                        Traverse originally used the Amadeus Self-Service APIs for flight and hotel search. Amadeus has announced a full shutdown of this developer portal on <span className="font-bold">17 July 2026</span>, after which all keys will be revoked and API access will be disabled.
+                      </p>
+                      <p className="mt-2 text-xs leading-relaxed text-amber-900/90 dark:text-amber-100/90">
+                        Intermittent outages and response failures are already occurring, so live requests may fail at any time.
+                      </p>
+                      <p className="mt-2 text-xs leading-relaxed font-medium text-amber-950 dark:text-amber-50">
+                        To keep the product fully demonstrable, searches now automatically fall back to sample/demo data. You can still enter example locations and explore end-to-end flight and hotel results, trip planning integration, and booking flow behavior.
+                      </p>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </motion.div>
       )}

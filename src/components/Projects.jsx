@@ -33,14 +33,14 @@ const Projects = ({ onOpenProject, portfolioData }) => {
           <div className="hidden sm:flex items-center gap-2">
             <button
               onClick={() => scroll(-1)}
-              className="glass-strong rounded-xl p-2 text-gray-500 transition-all hover:text-gray-900 hover:scale-110 active:scale-95 dark:text-gray-400 dark:hover:text-white"
+              className="glass-strong rounded-xl p-2 text-gray-500 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-gray-900 hover:scale-105 active:scale-95 dark:text-gray-400 dark:hover:text-white"
               aria-label="Scroll left"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={() => scroll(1)}
-              className="glass-strong rounded-xl p-2 text-gray-500 transition-all hover:text-gray-900 hover:scale-110 active:scale-95 dark:text-gray-400 dark:hover:text-white"
+              className="glass-strong rounded-xl p-2 text-gray-500 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-gray-900 hover:scale-105 active:scale-95 dark:text-gray-400 dark:hover:text-white"
               aria-label="Scroll right"
             >
               <ChevronRight className="h-5 w-5" />
@@ -48,17 +48,17 @@ const Projects = ({ onOpenProject, portfolioData }) => {
           </div>
         </motion.div>
 
-        <div ref={scrollRef} className="mt-10 flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+        <div ref={scrollRef} className="mt-10 -mx-1 flex gap-5 overflow-x-auto overflow-y-visible px-1 pt-3 pb-4 snap-x snap-mandatory scrollbar-hide">
           {portfolioData.projects.map((project, index) => (
             <motion.button
               key={project.id}
               type="button"
               onClick={() => onOpenProject(project)}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.25, delay: index * 0.04 }}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="glass group relative flex w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl text-left transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/5 dark:hover:shadow-indigo-500/10"
+              className="glass group relative flex w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl text-left transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-xl hover:shadow-indigo-500/8 dark:hover:shadow-indigo-500/12"
             >
               {/* Thumbnail */}
               <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100/50 dark:bg-white/[0.04]">
@@ -87,7 +87,7 @@ const Projects = ({ onOpenProject, portfolioData }) => {
                   {project.tech.slice(0, 3).map((t) => (
                     <span
                       key={t}
-                      className="glass-subtle rounded-md px-2 py-0.5 text-[0.7rem] font-medium text-gray-600 dark:text-gray-500"
+                      className="glass-subtle rounded-md border border-transparent px-2 py-0.5 text-[0.7rem] font-medium text-gray-600 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:border-indigo-300/75 group-hover:bg-white/65 group-hover:text-gray-800 dark:text-gray-500 dark:group-hover:border-indigo-300/40 dark:group-hover:bg-white/10 dark:group-hover:text-gray-300"
                     >
                       {t}
                     </span>

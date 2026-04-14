@@ -4,6 +4,12 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
+  :root {
+    --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur-fast: 220ms;
+    --dur-med: 320ms;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -43,6 +49,7 @@
   left: 0;
   pointer-events: none;
   will-change: transform;
+  transform: translate3d(-100px, -100px, 0);
   z-index: 1;
 }
 

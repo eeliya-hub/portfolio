@@ -231,7 +231,7 @@ const Skills = ({ portfolioData }) => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.03 }}
                     whileHover={{ y: -3, scale: 1.04 }}
-                    className="glass-subtle group flex items-center gap-2.5 rounded-xl px-4 py-3 text-left transition-all duration-300"
+                    className="glass-subtle group flex items-center gap-2.5 rounded-xl border border-transparent px-4 py-3 text-left transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-indigo-300/70 dark:hover:border-indigo-300/35"
                   >
                     <div
                       className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br"

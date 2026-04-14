@@ -57,9 +57,17 @@ function CursorGlow() {
     let raf;
     const lerp = (a, b, t) => a + (b - a) * t;
     const tick = () => {
-      glow.current.x = lerp(glow.current.x, pos.current.x, 0.12);
-      glow.current.y = lerp(glow.current.y, pos.current.y, 0.12);
-      if (glowRef.current) glowRef.current.style.transform = `translate(${glow.current.x - 150}px, ${glow.current.y - 150}px)`;
+      const dx = pos.current.x - glow.current.x;
+      const dy = pos.current.y - glow.current.y;
+      const distance = Math.hypot(dx, dy);
+      const smoothFactor = Math.min(0.2, Math.max(0.1, distance / 900));
+
+      glow.current.x = lerp(glow.current.x, pos.current.x, smoothFactor);
+      glow.current.y = lerp(glow.current.y, pos.current.y, smoothFactor);
+
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate3d(${(glow.current.x - 150).toFixed(2)}px, ${(glow.current.y - 150).toFixed(2)}px, 0)`;
+      }
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -175,7 +183,7 @@ function ThemeToggle({ theme, onToggle }) {
   return (
     <button
       onClick={onToggle}
-      className="fixed top-5 right-5 z-50 glass-strong rounded-2xl p-3 transition-all duration-300 hover:scale-110 active:scale-95"
+      className="fixed top-5 right-5 z-50 glass-strong rounded-2xl p-3 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 active:scale-95"
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {theme === 'dark' ? (
