@@ -72,7 +72,8 @@ const getActionIcon = (label) => {
 
 const ProjectModal = ({ onClose, project }) => {
   const [hoveredAction, setHoveredAction] = useState(null);
-  const [showTravelDataWarning, setShowTravelDataWarning] = useState(false);
+  const [warningProjectId, setWarningProjectId] = useState(null);
+  const showTravelDataWarning = warningProjectId === project?.id;
 
   useEffect(() => {
     if (!project) return;
@@ -80,10 +81,6 @@ const ProjectModal = ({ onClose, project }) => {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose, project]);
-
-  useEffect(() => {
-    setShowTravelDataWarning(false);
-  }, [project?.id]);
 
   return (
     <AnimatePresence>
@@ -99,7 +96,7 @@ const ProjectModal = ({ onClose, project }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/40 backdrop-blur-xl dark:bg-black/60"
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm dark:bg-black/60"
             onClick={onClose}
           />
 
@@ -131,10 +128,14 @@ const ProjectModal = ({ onClose, project }) => {
                   <div className="relative">
                     <button
                       type="button"
-                      onClick={() => setShowTravelDataWarning((prev) => !prev)}
+                      onClick={() =>
+                        setWarningProjectId((prev) =>
+                          prev === project.id ? null : project.id,
+                        )
+                      }
                       onMouseEnter={() => setHoveredAction('Travel Data Warning')}
                       onMouseLeave={() => setHoveredAction(null)}
-                      className="flex h-9 w-9 items-center justify-center rounded-xl border border-amber-300/80 bg-amber-100/90 text-amber-700 shadow-[0_0_0_1px_rgba(251,191,36,0.35),0_0_18px_rgba(245,158,11,0.35)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:bg-amber-200/90 dark:border-amber-300/70 dark:bg-amber-500/25 dark:text-amber-300 [animation:pulse_4s_ease-in-out_infinite]"
+                      className="flex h-9 w-9 items-center justify-center rounded-xl border border-amber-300/80 bg-amber-100/90 text-amber-700 shadow-[0_0_0_1px_rgba(251,191,36,0.35),0_0_18px_rgba(245,158,11,0.2)] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:bg-amber-200/90 dark:border-amber-300/70 dark:bg-amber-500/25 dark:text-amber-300"
                       aria-label="Travel data warning"
                       aria-expanded={showTravelDataWarning}
                     >
@@ -232,7 +233,7 @@ const ProjectModal = ({ onClose, project }) => {
                           }}
                         >
                           {assetSrc ? (
-                            <img src={assetSrc} alt="" aria-hidden="true" className="h-3.5 w-3.5 object-contain" />
+                            <img src={assetSrc} alt="" aria-hidden="true" loading="lazy" decoding="async" className="h-3.5 w-3.5 object-contain" />
                           ) : (
                             <span
                               className="h-2 w-2 rounded-full"
@@ -292,7 +293,7 @@ const ProjectModal = ({ onClose, project }) => {
                   <button
                     type="button"
                     aria-label="Close travel data warning"
-                    onClick={() => setShowTravelDataWarning(false)}
+                    onClick={() => setWarningProjectId(null)}
                     className="absolute inset-0 bg-black/60 backdrop-blur-md"
                   />
 
@@ -306,7 +307,7 @@ const ProjectModal = ({ onClose, project }) => {
                     >
                       <button
                         type="button"
-                        onClick={() => setShowTravelDataWarning(false)}
+                        onClick={() => setWarningProjectId(null)}
                         aria-label="Close alert"
                         className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-lg border border-amber-300/70 bg-amber-100/80 text-amber-800 transition-all duration-200 hover:scale-105 hover:bg-amber-200/90 dark:border-amber-300/40 dark:bg-amber-500/20 dark:text-amber-200"
                       >

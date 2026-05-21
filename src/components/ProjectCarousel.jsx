@@ -98,12 +98,13 @@ const ProjectCarousel = ({ images, title }) => {
     <>
       <div className="space-y-4">
       {/* Main image */}
-      <div className="relative overflow-hidden rounded-2xl glass">
+      <div className="group relative overflow-hidden rounded-2xl glass">
         <AnimatePresence mode="wait">
           <motion.img
             key={images[activeIndex]}
             src={images[activeIndex]}
             alt={`${title} preview ${activeIndex + 1}`}
+            decoding="async"
             initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.97 }}
@@ -117,16 +118,16 @@ const ProjectCarousel = ({ images, title }) => {
         <button
           type="button"
           onClick={prev}
-          className="absolute left-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full glass text-gray-700 dark:text-white transition-all duration-200 hover:scale-110 opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100"
-          style={{ opacity: 0.8 }}
+          className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full glass text-gray-700 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:scale-110 hover:opacity-100 focus:opacity-100 dark:text-white"
+          aria-label="Previous image"
         >
           <ChevronLeft className="h-4 w-4" />
         </button>
         <button
           type="button"
           onClick={next}
-          className="absolute right-3 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full glass text-gray-700 dark:text-white transition-all duration-200 hover:scale-110 opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100"
-          style={{ opacity: 0.8 }}
+          className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full glass text-gray-700 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:scale-110 hover:opacity-100 focus:opacity-100 dark:text-white"
+          aria-label="Next image"
         >
           <ChevronRight className="h-4 w-4" />
         </button>
@@ -144,7 +145,7 @@ const ProjectCarousel = ({ images, title }) => {
             <div
               className={`h-2 rounded-full transition-all duration-300 ${
                 activeIndex === index
-                  ? 'w-6 bg-gradient-to-r from-indigo-500 to-purple-500'
+                  ? 'w-6 bg-gray-900 dark:bg-white'
                   : 'w-2 bg-gray-300 hover:bg-gray-400 dark:bg-white/15 dark:hover:bg-white/25'
               }`}
             />

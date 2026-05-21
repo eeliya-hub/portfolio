@@ -23,8 +23,8 @@ const Projects = ({ onOpenProject, portfolioData }) => {
           className="flex items-end justify-between"
         >
           <div>
-            <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-              {displayed}<span className={`inline-block w-[2px] h-[1em] bg-indigo-500 dark:bg-indigo-400 ml-0.5 align-middle ${done ? 'animate-blink' : ''}`} />
+            <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent dark:from-white dark:to-white/60">
+              {displayed}<span className={`inline-block w-[2px] h-[1em] bg-gray-800 dark:bg-white/80 ml-0.5 align-middle ${done ? 'animate-blink' : ''}`} />
             </h2>
             <p className="mt-2 min-h-[3rem] md:min-h-[1.75rem] text-gray-500 dark:text-gray-400">
               {subDisplayed}
@@ -58,13 +58,15 @@ const Projects = ({ onOpenProject, portfolioData }) => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.25, delay: index * 0.04 }}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="glass group relative flex w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl text-left transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-xl hover:shadow-indigo-500/8 dark:hover:shadow-indigo-500/12"
+              className="glass group relative flex w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl text-left transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/30"
             >
               {/* Thumbnail */}
               <div className="aspect-[16/10] w-full overflow-hidden bg-gray-100/50 dark:bg-white/[0.04]">
                 <img
                   src={project.thumbnail}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
                 />
                 {/* Overlay shimmer on hover */}
@@ -73,7 +75,7 @@ const Projects = ({ onOpenProject, portfolioData }) => {
 
               {/* Body */}
               <div className="flex flex-1 flex-col p-5">
-                <span className="mb-2 inline-block self-start rounded-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/10 px-2.5 py-1 text-[0.68rem] font-semibold text-indigo-600 dark:from-indigo-500/20 dark:to-purple-500/20 dark:text-indigo-400">
+                <span className="mb-2 inline-block self-start rounded-lg bg-black/5 px-2.5 py-1 text-[0.68rem] font-semibold text-gray-700 dark:bg-white/[0.08] dark:text-white/72">
                   {project.category}
                 </span>
                 <h3 className="text-[1rem] font-semibold text-gray-900 dark:text-white">
@@ -87,14 +89,14 @@ const Projects = ({ onOpenProject, portfolioData }) => {
                   {project.tech.slice(0, 3).map((t) => (
                     <span
                       key={t}
-                      className="glass-subtle rounded-md border border-transparent px-2 py-0.5 text-[0.7rem] font-medium text-gray-600 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:border-indigo-300/75 group-hover:bg-white/65 group-hover:text-gray-800 dark:text-gray-500 dark:group-hover:border-indigo-300/40 dark:group-hover:bg-white/10 dark:group-hover:text-gray-300"
+                      className="glass-subtle rounded-md border border-transparent px-2 py-0.5 text-[0.7rem] font-medium text-gray-600 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:border-black/10 group-hover:bg-white/65 group-hover:text-gray-800 dark:text-gray-500 dark:group-hover:border-white/10 dark:group-hover:bg-white/10 dark:group-hover:text-gray-300"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-4 flex items-center gap-1.5 pt-3 border-t border-gray-200/40 dark:border-white/[0.04] text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                <div className="mt-4 flex items-center gap-1.5 border-t border-gray-200/40 pt-3 text-sm font-medium text-gray-700 dark:border-white/[0.04] dark:text-white/72">
                   View project
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                 </div>

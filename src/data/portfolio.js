@@ -104,13 +104,13 @@ export const portfolioData = {
         'AI-assisted travel support with backend proxying to protect external API keys',
       ],
       thumbnail:
-        `${base}projectImages/traversethumb.png`,
+        `${base}projectImages/traversethumb.jpg`,
       gallery: [
-        `${base}projectImages/Traverse1.png`,
-        `${base}projectImages/Traverse2.png`,
-        `${base}projectImages/Traverse3.png`,
-        `${base}projectImages/Traverse4.png`,
-        `${base}projectImages/Traverse5.png`,
+        `${base}projectImages/Traverse1.jpg`,
+        `${base}projectImages/Traverse2.jpg`,
+        `${base}projectImages/Traverse3.jpg`,
+        `${base}projectImages/Traverse4.jpg`,
+        `${base}projectImages/Traverse5.jpg`,
       ],
       actions: [
         { label: 'Live Demo', href: 'https://eeliya-hub.github.io/traverse-web/' },
@@ -133,11 +133,11 @@ export const portfolioData = {
         'Blind bidding system with winner selection, protected routes, and documented API endpoints',
       ],
       thumbnail:
-        `${base}projectImages/alumthumb.png`,
+        `${base}projectImages/alumthumb.jpg`,
       gallery: [
-        `${base}projectImages/Alum1.png`,
-        `${base}projectImages/Alum2.png`,
-        `${base}projectImages/Alum3.png`,
+        `${base}projectImages/Alum1.jpg`,
+        `${base}projectImages/Alum2.jpg`,
+        `${base}projectImages/Alum3.jpg`,
       ],
       actions: [
         { label: 'API Preview', href: null },
@@ -160,12 +160,12 @@ export const portfolioData = {
         'Trend visualisation that helps users review patterns in past health check responses',
       ],
       thumbnail:
-        `${base}projectImages/skythumb.png`,
+        `${base}projectImages/skythumb.jpg`,
       gallery: [
-        `${base}projectImages/Sky1.png`,
-        `${base}projectImages/Sky2.png`,
-        `${base}projectImages/Sky3.png`,
-        `${base}projectImages/Sky4.png`,
+        `${base}projectImages/Sky1.jpg`,
+        `${base}projectImages/Sky2.jpg`,
+        `${base}projectImages/Sky3.jpg`,
+        `${base}projectImages/Sky4.jpg`,
       ],
       actions: [
         { label: 'Prototype', href: null },
@@ -188,10 +188,10 @@ export const portfolioData = {
         'Saved location history that restores previously viewed places across sessions',
       ],
       thumbnail:
-        `${base}projectImages/weatherthumb.png`,
+        `${base}projectImages/weatherthumb.jpg`,
       gallery: [
-        `${base}projectImages/Weather1.png`,
-        `${base}projectImages/Weather2.png`,
+        `${base}projectImages/Weather1.jpg`,
+        `${base}projectImages/Weather2.jpg`,
       ],
       actions: [
         { label: 'Preview', href: null },
@@ -214,11 +214,11 @@ export const portfolioData = {
         'Client-side PDF report generation to compare predictions against actual results',
       ],
       thumbnail:
-        `${base}projectImages/premthumb.png`,
+        `${base}projectImages/premthumb.jpg`,
       gallery: [
-        `${base}projectImages/PremPred1.png`,
-        `${base}projectImages/PremPred2.png`,
-        `${base}projectImages/PremPred3.png`,
+        `${base}projectImages/PremPred1.jpg`,
+        `${base}projectImages/PremPred2.jpg`,
+        `${base}projectImages/PremPred3.jpg`,
       ],
       actions: [
         { label: 'Dashboard', href: null },

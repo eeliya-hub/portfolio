@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
 import {
   Cpu,
   FolderKanban,
@@ -24,7 +23,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
 
   const handleEnter = () => {
     clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => setExpanded(true), 1000);
+    timerRef.current = setTimeout(() => setExpanded(true), 260);
   };
 
   const handleLeave = () => {
@@ -36,13 +35,12 @@ const Sidebar = ({ activeSection, onNavigate }) => {
 
   return (
     <>
-      {/* Desktop sidebar — expands after 3s hover */}
-      <motion.aside
+      <aside
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
-        animate={{ width: expanded ? 160 : 60 }}
-        transition={{ type: 'spring', duration: 0.4, bounce: 0.1 }}
-        className="hidden md:flex fixed left-4 top-1/2 -translate-y-1/2 z-40 flex-col glass-strong rounded-2xl py-3 px-2 gap-1 overflow-hidden"
+        className={`fixed left-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-1 overflow-hidden rounded-2xl py-3 px-2 transition-[width] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:flex ${
+          expanded ? 'w-40 glass-strong' : 'w-[3.75rem] glass'
+        }`}
       >
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
@@ -50,31 +48,25 @@ const Sidebar = ({ activeSection, onNavigate }) => {
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`relative flex items-center gap-3 rounded-xl h-11 px-2.5 transition-all duration-200 whitespace-nowrap ${
+              className={`relative flex h-11 items-center gap-3 whitespace-nowrap rounded-xl px-2.5 transition-colors duration-200 ${
                 isActive
-                  ? 'text-indigo-600 dark:text-indigo-400'
+                  ? 'bg-black/[0.05] text-gray-900 dark:bg-white/[0.08] dark:text-white'
                   : 'text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white'
               }`}
+              aria-current={isActive ? 'page' : undefined}
             >
-              {isActive && (
-                <motion.div
-                  layoutId="sidebar-pill"
-                  className="absolute inset-0 rounded-xl bg-indigo-50/80 dark:bg-indigo-500/[0.12] glass-subtle"
-                  transition={{ type: 'spring', duration: 0.4, bounce: 0.12 }}
-                />
-              )}
-              <item.icon className="relative h-[18px] w-[18px] shrink-0" />
-              <motion.span
-                animate={{ opacity: expanded ? 1 : 0, width: expanded ? 'auto' : 0 }}
-                transition={{ duration: 0.2 }}
-                className="relative text-xs font-semibold overflow-hidden"
+              <item.icon className="h-[18px] w-[18px] shrink-0" />
+              <span
+                className={`overflow-hidden text-xs font-semibold transition-all duration-200 ${
+                  expanded ? 'w-auto opacity-100' : 'w-0 opacity-0'
+                }`}
               >
                 {item.label}
-              </motion.span>
+              </span>
             </button>
           );
         })}
-      </motion.aside>
+      </aside>
 
       {/* Mobile bottom bar — floating */}
       <nav className="fixed left-3 right-3 bottom-3 z-40 flex md:hidden items-center justify-around glass-strong rounded-2xl px-1 pb-[env(safe-area-inset-bottom)] pt-1">
@@ -86,19 +78,13 @@ const Sidebar = ({ activeSection, onNavigate }) => {
               onClick={() => onNavigate(item.id)}
               className={`relative flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-[0.6rem] font-medium transition-colors ${
                 isActive
-                  ? 'text-indigo-600 dark:text-indigo-400'
+                  ? 'bg-black/[0.05] text-gray-900 dark:bg-white/[0.08] dark:text-white'
                   : 'text-gray-400 dark:text-gray-500'
               }`}
+              aria-current={isActive ? 'page' : undefined}
             >
-              {isActive && (
-                <motion.div
-                  layoutId="mobile-pill"
-                  className="absolute inset-0 rounded-xl bg-indigo-50/60 dark:bg-indigo-500/[0.08]"
-                  transition={{ type: 'spring', duration: 0.35, bounce: 0.1 }}
-                />
-              )}
-              <item.icon className="relative h-[18px] w-[18px]" />
-              <span className="relative">{item.label}</span>
+              <item.icon className="h-[18px] w-[18px]" />
+              <span>{item.label}</span>
             </button>
           );
         })}

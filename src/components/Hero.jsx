@@ -8,12 +8,6 @@ const Hero = ({ onNavigate, portfolioData }) => {
 
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-20 sm:px-10 lg:px-16 overflow-hidden">
-      {/* Decorative glass shapes */}
-      <div className="absolute top-16 right-20 h-28 w-28 rounded-3xl rotate-12 glass-object opacity-30 dark:opacity-15 orb-1" />
-      <div className="absolute bottom-24 left-14 h-20 w-20 rounded-full glass-object opacity-25 dark:opacity-12 orb-2" />
-      <div className="absolute top-1/4 left-1/3 h-14 w-14 rounded-2xl rotate-45 glass-object opacity-20 dark:opacity-10 orb-3" />
-      <div className="absolute bottom-1/3 right-1/4 h-10 w-32 rounded-full glass-object opacity-18 dark:opacity-10 float-gentle" />
-
       <div className="text-center max-w-2xl">
         {/* Status */}
         <motion.div
@@ -31,9 +25,9 @@ const Hero = ({ onNavigate, portfolioData }) => {
         </motion.div>
 
         {/* Name with typing effect */}
-        <h1 className="mt-8 text-[clamp(3rem,7vw,5.5rem)] font-bold leading-[1] tracking-tight bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
+        <h1 className="mt-8 text-[clamp(3rem,7vw,5.5rem)] font-bold leading-[1] tracking-tight bg-gradient-to-r from-gray-900 via-gray-700 to-gray-500 bg-clip-text text-transparent dark:from-white dark:via-white/92 dark:to-white/56">
           {displayed}
-          <span className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-indigo-500 dark:bg-indigo-400 animate-blink rounded-sm" />
+          <span className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-gray-800 dark:bg-white/80 animate-blink rounded-sm" />
         </h1>
 
         {/* Role */}
@@ -65,7 +59,7 @@ const Hero = ({ onNavigate, portfolioData }) => {
         >
           <button
             onClick={() => onNavigate('projects')}
-            className="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:scale-[1.04] active:scale-[0.97]"
+            className="group inline-flex items-center gap-2 rounded-2xl bg-gray-900 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/20 transition-all duration-300 hover:shadow-xl hover:shadow-black/25 hover:scale-[1.04] active:scale-[0.97] dark:bg-white dark:text-black dark:shadow-black/30"
           >
             View My Work
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

@@ -18,8 +18,8 @@ const About = ({ portfolioData }) => {
             transition={{ duration: 0.5 }}
             className="glass rounded-2xl p-7 lg:col-span-3"
           >
-            <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
-              {displayed}<span className={`inline-block w-[2px] h-[1em] bg-indigo-500 dark:bg-indigo-400 ml-0.5 align-middle ${done ? 'animate-blink' : ''}`} />
+            <h2 className="mb-4 text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent dark:from-white dark:to-white/60">
+              {displayed}<span className={`inline-block w-[2px] h-[1em] bg-gray-800 dark:bg-white/80 ml-0.5 align-middle ${done ? 'animate-blink' : ''}`} />
             </h2>
             <p className="text-[1.05rem] leading-relaxed text-gray-700 dark:text-gray-300">
               {summary}
@@ -35,10 +35,10 @@ const About = ({ portfolioData }) => {
               whileHover={{ y: -4, scale: 1.01 }}
               className="glass rounded-2xl p-6 lg:col-span-2 flex flex-col justify-center"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 text-indigo-600 dark:from-indigo-500/20 dark:to-purple-500/20 dark:text-indigo-400 mb-4">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-black/5 to-black/10 text-gray-700 dark:from-white/[0.08] dark:to-white/[0.12] dark:text-white/80">
                 <GraduationCap className="h-6 w-6" />
               </div>
-              <p className="text-[0.68rem] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1">
+              <p className="mb-1 text-[0.68rem] font-bold uppercase tracking-widest text-gray-700 dark:text-white/70">
                 Education
               </p>
               <p className="text-lg font-bold text-gray-900 dark:text-white leading-tight">
@@ -47,9 +47,9 @@ const About = ({ portfolioData }) => {
               <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                 {education.degree}
               </p>
-              <div className="mt-3 inline-flex self-start items-center gap-1.5 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/15 px-3 py-1.5">
-                <Rocket className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
-                <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              <div className="mt-3 inline-flex self-start items-center gap-1.5 rounded-lg bg-black/5 px-3 py-1.5 dark:bg-white/[0.08]">
+                <Rocket className="h-3.5 w-3.5 text-gray-700 dark:text-white/80" />
+                <span className="text-xs font-bold text-gray-700 dark:text-white/80">
                   {education.result}
                 </span>
               </div>
@@ -71,7 +71,7 @@ const About = ({ portfolioData }) => {
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               className="glass rounded-2xl p-5 cursor-default"
             >
-              <p className="text-[0.68rem] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
+              <p className="text-[0.68rem] font-bold uppercase tracking-widest text-gray-700 dark:text-white/70">
                 {item.label}
               </p>
               <p className="mt-2 text-[0.95rem] font-bold text-gray-900 dark:text-white">

@@ -15,8 +15,8 @@ const Experience = ({ portfolioData }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-indigo-500 dark:bg-indigo-400 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
+          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent dark:from-white dark:to-white/60">
+            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-gray-800 dark:bg-white/80 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
           </h2>
           <p className="mt-2 min-h-[3rem] md:min-h-[1.75rem] text-gray-500 dark:text-gray-400">
             {typedSub}
@@ -25,7 +25,7 @@ const Experience = ({ portfolioData }) => {
 
         <div className="relative mt-10 space-y-0">
           {/* Vertical line — gradient */}
-          <div className="absolute left-5 top-3 bottom-3 w-px bg-gradient-to-b from-indigo-400/40 via-purple-400/30 to-transparent dark:from-indigo-500/20 dark:via-purple-500/15" />
+          <div className="absolute bottom-3 left-5 top-3 w-px bg-gradient-to-b from-black/18 via-black/8 to-transparent dark:from-white/18 dark:via-white/10" />
 
           {portfolioData.journey.map((item, index) => {
             const Icon = icons[index];
@@ -40,9 +40,9 @@ const Experience = ({ portfolioData }) => {
                 {/* Dot — glass circle */}
                 <motion.div
                   whileHover={{ scale: 1.15 }}
-                  className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full glass cursor-default transition-all duration-300 group-hover:shadow-lg group-hover:shadow-indigo-500/10"
+                  className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full glass cursor-default transition-all duration-300 group-hover:shadow-lg group-hover:shadow-black/10 dark:group-hover:shadow-black/20"
                 >
-                  <Icon className="h-4 w-4 text-indigo-500 dark:text-indigo-400" />
+                  <Icon className="h-4 w-4 text-gray-700 dark:text-white/75" />
                 </motion.div>
 
                 <motion.div
@@ -50,7 +50,7 @@ const Experience = ({ portfolioData }) => {
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                   className="glass rounded-2xl p-4 flex-1 cursor-default transition-all duration-300"
                 >
-                  <span className="inline-block rounded-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/10 px-2.5 py-1 text-[0.68rem] font-semibold text-indigo-600 dark:from-indigo-500/20 dark:to-purple-500/20 dark:text-indigo-400">
+                  <span className="inline-block rounded-lg bg-black/5 px-2.5 py-1 text-[0.68rem] font-semibold text-gray-700 dark:bg-white/[0.08] dark:text-white/70">
                     {item.phase}
                   </span>
                   <h3 className="mt-2 text-[1rem] font-semibold text-gray-900 dark:text-white">
@@ -63,7 +63,7 @@ const Experience = ({ portfolioData }) => {
                     {item.bullets.map((bullet) => (
                       <span
                         key={bullet}
-                        className="glass-subtle rounded-lg px-2.5 py-1 text-[0.72rem] font-medium text-gray-500 transition-colors duration-200 hover:text-indigo-600 dark:text-gray-500 dark:hover:text-indigo-400"
+                        className="glass-subtle rounded-lg px-2.5 py-1 text-[0.72rem] font-medium text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white"
                       >
                         {bullet}
                       </span>

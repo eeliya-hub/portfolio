@@ -29,36 +29,6 @@ import { useTypewriter } from '../utils/useTypewriter';
 
 const tabIcons = [Code2, Layers, MonitorCog, Braces, Users];
 
-const skillBrandColors = {
-  Python: '#3776ab',
-  Java: '#f89820',
-  JavaScript: '#f7df1e',
-  Dart: '#0175c2',
-  SQL: '#003b57',
-  Swift: '#fa7343',
-  PHP: '#777bb4',
-  HTML: '#e34c26',
-  CSS: '#1572b6',
-  React: '#61dafb',
-  'Node.js': '#68a063',
-  Express: '#111827',
-  Django: '#092e20',
-  Flutter: '#54c5f8',
-  SwiftUI: '#0f172a',
-  'Tailwind CSS': '#06b6d4',
-  Vite: '#646cff',
-  Firebase: '#ff9100',
-  'REST APIs': '#4f46e5',
-  'VS Code': '#007acc',
-  Git: '#f1502f',
-  GitHub: '#111827',
-  Figma: '#f24e1e',
-  Postman: '#ff6c37',
-  'Google Cloud': '#4285f4',
-  Xcode: '#147efb',
-  'Android Studio': '#3ddc84',
-};
-
 const base = import.meta.env.BASE_URL;
 
 const skillAssetMap = {
@@ -111,6 +81,53 @@ const skillLucideIcons = {
   'Project Management': ClipboardList,
 };
 
+const tabIndicatorTransition = {
+  type: 'spring',
+  stiffness: 320,
+  damping: 28,
+};
+
+const skillPanelVariants = {
+  enter: (direction) => ({
+    opacity: 0,
+    x: direction > 0 ? 22 : -22,
+    y: 6,
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: {
+      duration: 0.28,
+      ease: [0.22, 1, 0.36, 1],
+      when: 'beforeChildren',
+      staggerChildren: 0.026,
+    },
+  },
+  exit: (direction) => ({
+    opacity: 0,
+    x: direction > 0 ? -18 : 18,
+    y: -4,
+    transition: {
+      duration: 0.18,
+      ease: [0.4, 0, 1, 1],
+    },
+  }),
+};
+
+const skillItemVariants = {
+  enter: { opacity: 0, y: 10, scale: 0.985 },
+  center: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.22,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 const SkillBadge = ({ name, large = false }) => {
   const assetSrc = skillAssetMap[name];
   const LucideIcon = skillLucideIcons[name];
@@ -121,6 +138,8 @@ const SkillBadge = ({ name, large = false }) => {
         src={assetSrc}
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className={`${large ? 'h-5 w-5' : 'h-4 w-4'} object-contain`}
       />
     );
@@ -129,13 +148,13 @@ const SkillBadge = ({ name, large = false }) => {
   if (LucideIcon) {
     return (
       <LucideIcon
-        className={`${large ? 'h-5 w-5' : 'h-4 w-4'} text-indigo-600 dark:text-indigo-400`}
+        className={`${large ? 'h-5 w-5' : 'h-4 w-4'} text-gray-700 dark:text-white/75`}
       />
     );
   }
 
   return (
-    <span className={`${large ? 'text-sm' : 'text-[0.65rem]'} font-bold text-indigo-600 dark:text-indigo-400`}>
+    <span className={`${large ? 'text-sm' : 'text-[0.65rem]'} font-bold text-gray-700 dark:text-white/75`}>
       {name.split(/[\s./&+-]+/).filter(Boolean).slice(0, 2).map((p) => p[0]).join('').toUpperCase()}
     </span>
   );
@@ -146,11 +165,19 @@ const Skills = ({ portfolioData }) => {
   const { displayed: typedTitle, done: titleDone } = useTypewriter('Tech Stack', 80, 200);
   const { displayed: typedSub } = useTypewriter('Languages, frameworks, tools, and skills I bring to the table.', 20, 900);
   const [activeTab, setActiveTab] = useState(0);
+  const [tabDirection, setTabDirection] = useState(1);
   const [popupSkill, setPopupSkill] = useState(null); // { item, rect } or null
 
   const openPopup = (item, e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setPopupSkill({ item, rect });
+  };
+
+  const handleTabChange = (nextIndex) => {
+    if (nextIndex === activeTab) return;
+    setTabDirection(nextIndex > activeTab ? 1 : -1);
+    setActiveTab(nextIndex);
+    setPopupSkill(null);
   };
 
   return (
@@ -161,8 +188,8 @@ const Skills = ({ portfolioData }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-indigo-500 dark:bg-indigo-400 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
+          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent dark:from-white dark:to-white/60">
+            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-gray-800 dark:bg-white/80 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
           </h2>
           <p className="mt-2 min-h-[3rem] md:min-h-[1.75rem] text-gray-600 dark:text-gray-400">
             {typedSub}
@@ -170,30 +197,25 @@ const Skills = ({ portfolioData }) => {
         </motion.div>
 
         {/* Category toggle tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.4 }}
-          className="mt-8 glass rounded-2xl p-1.5 inline-flex gap-1 flex-wrap"
-        >
+        <div className="mt-8 inline-flex flex-wrap gap-1 rounded-2xl p-1.5 glass">
           {groups.map((group, i) => {
             const Icon = tabIcons[i];
             const isActive = activeTab === i;
             return (
               <button
                 key={group.title}
-                onClick={() => { setActiveTab(i); setPopupSkill(null); }}
+                onClick={() => handleTabChange(i)}
                 className={`relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-[0.8rem] font-medium transition-all duration-300 ${
                   isActive
-                    ? 'text-white'
+                    ? 'text-white dark:text-black'
                     : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
                 }`}
               >
                 {isActive && (
                   <motion.div
-                    layoutId="skills-tab"
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/20"
-                    transition={{ type: 'spring', duration: 0.45, bounce: 0.15 }}
+                    layoutId="skills-tab-indicator"
+                    className="absolute inset-0 rounded-xl bg-gray-900 shadow-lg shadow-black/15 dark:bg-white"
+                    transition={tabIndicatorTransition}
                   />
                 )}
                 {Icon && <Icon className="relative h-4 w-4" />}
@@ -201,16 +223,17 @@ const Skills = ({ portfolioData }) => {
               </button>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Active group — clickable items */}
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false} custom={tabDirection} mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+            custom={tabDirection}
+            variants={skillPanelVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             className="mt-8"
           >
             <div className="glass rounded-2xl p-6">
@@ -222,26 +245,22 @@ const Skills = ({ portfolioData }) => {
               </p>
 
               <div className="flex flex-wrap gap-3">
-                {groups[activeTab].items.map((item, idx) => (
+                {groups[activeTab].items.map((item) => (
                   <motion.button
                     key={item.name}
                     type="button"
                     onClick={(e) => openPopup(item, e)}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.03 }}
-                    whileHover={{ y: -3, scale: 1.04 }}
-                    className="glass-subtle group flex items-center gap-2.5 rounded-xl border border-transparent px-4 py-3 text-left transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-indigo-300/70 dark:hover:border-indigo-300/35"
+                    variants={skillItemVariants}
+                    initial="enter"
+                    animate="center"
+                    className="glass-subtle group flex items-center gap-2.5 rounded-xl border border-transparent px-4 py-3 text-left transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-black/10 dark:hover:border-white/10"
                   >
                     <div
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br"
-                      style={{
-                        backgroundImage: `linear-gradient(to bottom right, ${skillBrandColors[item.name] || '#4f46e5'}20, ${skillBrandColors[item.name] || '#7c3aed'}30)`,
-                      }}
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-black/5 dark:bg-white/[0.08]"
                     >
                       <SkillBadge name={item.name} />
                     </div>
-                    <span className="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <span className="text-sm font-medium text-gray-800 transition-colors group-hover:text-gray-900 dark:text-gray-200 dark:group-hover:text-white">
                       {item.name}
                     </span>
                   </motion.button>
@@ -286,10 +305,7 @@ const Skills = ({ portfolioData }) => {
 
               <div className="flex items-center gap-3 mb-4">
                 <div
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br"
-                  style={{
-                    backgroundImage: `linear-gradient(to bottom right, ${skillBrandColors[popupSkill.item.name] || '#4f46e5'}20, ${skillBrandColors[popupSkill.item.name] || '#7c3aed'}30)`,
-                  }}
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-black/5 dark:bg-white/[0.08]"
                 >
                   <SkillBadge name={popupSkill.item.name} large />
                 </div>
@@ -306,7 +322,7 @@ const Skills = ({ portfolioData }) => {
 
               {popupSkill.item.used && (
                 <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                  <span className="font-semibold text-indigo-600 dark:text-indigo-400">Used in:</span>{' '}
+                  <span className="font-semibold text-gray-700 dark:text-white/75">Used in:</span>{' '}
                   {popupSkill.item.used}
                 </p>
               )}
