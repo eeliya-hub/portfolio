@@ -144,7 +144,7 @@ const ProjectCarousel = ({ images, title }) => {
             <div
               className={`h-2 rounded-full transition-all duration-300 ${
                 activeIndex === index
-                  ? 'w-6 bg-gradient-to-r from-indigo-500 to-purple-500'
+                  ? 'w-6 bg-gradient-to-r from-amber-500 to-orange-500'
                   : 'w-2 bg-gray-300 hover:bg-gray-400 dark:bg-white/15 dark:hover:bg-white/25'
               }`}
             />

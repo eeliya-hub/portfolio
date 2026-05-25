@@ -48,7 +48,7 @@ const skillBrandColors = {
   'Tailwind CSS': '#06b6d4',
   Vite: '#646cff',
   Firebase: '#ff9100',
-  'REST APIs': '#4f46e5',
+  'REST APIs': '#f59e0b',
   'VS Code': '#007acc',
   Git: '#f1502f',
   GitHub: '#111827',
@@ -129,13 +129,13 @@ const SkillBadge = ({ name, large = false }) => {
   if (LucideIcon) {
     return (
       <LucideIcon
-        className={`${large ? 'h-5 w-5' : 'h-4 w-4'} text-indigo-600 dark:text-indigo-400`}
+        className={`${large ? 'h-5 w-5' : 'h-4 w-4'} text-amber-700 dark:text-amber-300`}
       />
     );
   }
 
   return (
-    <span className={`${large ? 'text-sm' : 'text-[0.65rem]'} font-bold text-indigo-600 dark:text-indigo-400`}>
+    <span className={`${large ? 'text-sm' : 'text-[0.65rem]'} font-bold text-amber-700 dark:text-amber-300`}>
       {name.split(/[\s./&+-]+/).filter(Boolean).slice(0, 2).map((p) => p[0]).join('').toUpperCase()}
     </span>
   );
@@ -161,8 +161,8 @@ const Skills = ({ portfolioData }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-indigo-500 dark:bg-indigo-400 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
+          <h2 className="bg-gradient-to-r from-amber-700 via-yellow-500 to-orange-500 bg-clip-text text-3xl font-bold tracking-tight text-transparent dark:from-amber-200 dark:via-yellow-100 dark:to-orange-200">
+            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-amber-500 dark:bg-amber-300 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
           </h2>
           <p className="mt-2 min-h-[3rem] md:min-h-[1.75rem] text-gray-600 dark:text-gray-400">
             {typedSub}
@@ -192,7 +192,7 @@ const Skills = ({ portfolioData }) => {
                 {isActive && (
                   <motion.div
                     layoutId="skills-tab"
-                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/20"
+                    className="absolute inset-0 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 shadow-lg shadow-amber-500/20"
                     transition={{ type: 'spring', duration: 0.45, bounce: 0.15 }}
                   />
                 )}
@@ -231,17 +231,17 @@ const Skills = ({ portfolioData }) => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.03 }}
                     whileHover={{ y: -3, scale: 1.04 }}
-                    className="glass-subtle group flex items-center gap-2.5 rounded-xl border border-transparent px-4 py-3 text-left transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-indigo-300/70 dark:hover:border-indigo-300/35"
+                    className="glass-subtle group flex items-center gap-2.5 rounded-xl border border-transparent px-4 py-3 text-left transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-amber-300/70 dark:hover:border-amber-300/35"
                   >
                     <div
                       className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br"
                       style={{
-                        backgroundImage: `linear-gradient(to bottom right, ${skillBrandColors[item.name] || '#4f46e5'}20, ${skillBrandColors[item.name] || '#7c3aed'}30)`,
+                        backgroundImage: `linear-gradient(to bottom right, ${skillBrandColors[item.name] || '#f59e0b'}20, rgba(251, 191, 36, 0.18))`,
                       }}
                     >
                       <SkillBadge name={item.name} />
                     </div>
-                    <span className="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    <span className="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
                       {item.name}
                     </span>
                   </motion.button>
@@ -288,7 +288,7 @@ const Skills = ({ portfolioData }) => {
                 <div
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br"
                   style={{
-                    backgroundImage: `linear-gradient(to bottom right, ${skillBrandColors[popupSkill.item.name] || '#4f46e5'}20, ${skillBrandColors[popupSkill.item.name] || '#7c3aed'}30)`,
+                    backgroundImage: `linear-gradient(to bottom right, ${skillBrandColors[popupSkill.item.name] || '#f59e0b'}20, rgba(251, 191, 36, 0.18))`,
                   }}
                 >
                   <SkillBadge name={popupSkill.item.name} large />
@@ -306,7 +306,7 @@ const Skills = ({ portfolioData }) => {
 
               {popupSkill.item.used && (
                 <p className="mt-3 text-xs text-gray-500 dark:text-gray-400">
-                  <span className="font-semibold text-indigo-600 dark:text-indigo-400">Used in:</span>{' '}
+                  <span className="font-semibold text-amber-700 dark:text-amber-300">Used in:</span>{' '}
                   {popupSkill.item.used}
                 </p>
               )}

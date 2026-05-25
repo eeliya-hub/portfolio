@@ -31,9 +31,9 @@ const Hero = ({ onNavigate, portfolioData }) => {
         </motion.div>
 
         {/* Name with typing effect */}
-        <h1 className="mt-8 text-[clamp(3rem,7vw,5.5rem)] font-bold leading-[1] tracking-tight bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400">
+        <h1 className="mt-8 bg-gradient-to-r from-amber-700 via-yellow-500 to-orange-500 bg-clip-text text-[clamp(3rem,7vw,5.5rem)] font-bold leading-[1] tracking-tight text-transparent dark:from-amber-200 dark:via-yellow-100 dark:to-orange-200">
           {displayed}
-          <span className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-indigo-500 dark:bg-indigo-400 animate-blink rounded-sm" />
+          <span className="ml-1 inline-block h-[0.85em] w-[3px] animate-blink rounded-sm bg-amber-500 align-middle dark:bg-amber-300" />
         </h1>
 
         {/* Role */}
@@ -65,7 +65,7 @@ const Hero = ({ onNavigate, portfolioData }) => {
         >
           <button
             onClick={() => onNavigate('projects')}
-            className="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:scale-[1.04] active:scale-[0.97]"
+            className="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 px-7 py-3.5 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-500/25 transition-all duration-300 hover:scale-[1.04] hover:shadow-xl hover:shadow-amber-500/30 active:scale-[0.97]"
           >
             View My Work
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

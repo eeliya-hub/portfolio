@@ -53,8 +53,8 @@ const Contact = ({ portfolioData }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-indigo-500 dark:bg-indigo-400 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
+          <h2 className="bg-gradient-to-r from-amber-700 via-yellow-500 to-orange-500 bg-clip-text text-3xl font-bold tracking-tight text-transparent dark:from-amber-200 dark:via-yellow-100 dark:to-orange-200">
+            {typedTitle}<span className={`ml-0.5 inline-block h-[1em] w-[2px] align-middle ${titleDone ? 'animate-blink' : ''} bg-amber-500 dark:bg-amber-300`} />
           </h2>
           <p className="mt-2 min-h-[5.5rem] md:min-h-[3.75rem] max-w-lg text-gray-500 dark:text-gray-400">
             {typedSub}
@@ -87,20 +87,20 @@ const Contact = ({ portfolioData }) => {
                 >
                   <Wrapper
                     {...wrapperProps}
-                    className="glass flex gap-4 rounded-2xl p-5 cursor-pointer no-underline"
+                    className="project-card flex gap-4 rounded-2xl p-5 cursor-pointer no-underline"
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/20">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400/20 to-yellow-300/20 dark:from-amber-400/18 dark:to-yellow-200/18">
                       {method.iconLight && method.iconDark ? (
                         <>
                           <img src={method.iconLight} alt="" aria-hidden="true" className="h-5 w-5 object-contain block dark:hidden" />
                           <img src={method.iconDark} alt="" aria-hidden="true" className="h-5 w-5 object-contain hidden dark:block" />
                         </>
                       ) : Icon ? (
-                        <Icon className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                          <Icon className="h-5 w-5 text-amber-700 dark:text-amber-300" />
                       ) : null}
                     </div>
                     <div>
-                      <p className="text-[0.68rem] font-semibold uppercase tracking-widest text-indigo-500/70 dark:text-indigo-400/60">
+                      <p className="text-[0.68rem] font-semibold uppercase tracking-widest text-amber-700/80 dark:text-amber-300/70">
                         {method.label}
                       </p>
                       <p className="mt-1 text-[0.9rem] font-semibold text-gray-900 dark:text-white">
@@ -121,10 +121,10 @@ const Contact = ({ portfolioData }) => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="glass rounded-2xl p-6"
+            className="project-card rounded-2xl p-6"
           >
             <div className="flex items-center gap-3 mb-5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 text-indigo-600 dark:from-indigo-500/20 dark:to-purple-500/20 dark:text-indigo-400">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400/20 to-yellow-300/20 text-amber-700 dark:from-amber-400/18 dark:to-yellow-200/18 dark:text-amber-300">
                 <Send className="h-4 w-4" />
               </div>
               <h3 className="text-[0.95rem] font-semibold text-gray-900 dark:text-white">
@@ -144,7 +144,7 @@ const Contact = ({ portfolioData }) => {
                   onChange={handleChange}
                   required
                   placeholder="Your name"
-                  className="w-full glass-subtle rounded-xl px-4 py-2.5 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500/30 dark:text-white dark:placeholder:text-gray-600"
+                  className="project-chip w-full rounded-xl px-4 py-2.5 text-sm text-gray-900 outline-none transition-all placeholder:text-stone-400 focus:ring-2 focus:ring-amber-400/40 dark:text-white dark:placeholder:text-stone-500"
                 />
               </div>
               <div>
@@ -158,7 +158,7 @@ const Contact = ({ portfolioData }) => {
                   onChange={handleChange}
                   required
                   placeholder="your@email.com"
-                  className="w-full glass-subtle rounded-xl px-4 py-2.5 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500/30 dark:text-white dark:placeholder:text-gray-600"
+                  className="project-chip w-full rounded-xl px-4 py-2.5 text-sm text-gray-900 outline-none transition-all placeholder:text-stone-400 focus:ring-2 focus:ring-amber-400/40 dark:text-white dark:placeholder:text-stone-500"
                 />
               </div>
               <div>
@@ -172,13 +172,13 @@ const Contact = ({ portfolioData }) => {
                   required
                   rows={5}
                   placeholder="What would you like to talk about?"
-                  className="w-full resize-none glass-subtle rounded-xl px-4 py-2.5 text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500/30 dark:text-white dark:placeholder:text-gray-600"
+                  className="project-chip w-full resize-none rounded-xl px-4 py-2.5 text-sm text-gray-900 outline-none transition-all placeholder:text-stone-400 focus:ring-2 focus:ring-amber-400/40 dark:text-white dark:placeholder:text-stone-500"
                 />
               </div>
 
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/30 hover:scale-[1.01] active:scale-[0.98]"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 px-5 py-2.5 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-500/20 transition-all duration-300 hover:scale-[1.01] hover:shadow-xl hover:shadow-amber-500/30 active:scale-[0.98]"
               >
                 Send Message
                 <ArrowRight className="h-4 w-4" />
@@ -188,7 +188,7 @@ const Contact = ({ portfolioData }) => {
                 <motion.div
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="glass rounded-xl p-3 text-sm text-green-700 dark:text-green-400"
+                  className="project-card rounded-xl p-3 text-sm text-green-700 dark:text-green-400"
                 >
                   Message sent! I'll get back to you soon.
                 </motion.div>

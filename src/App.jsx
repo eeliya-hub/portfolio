@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
-import Projects from './components/Projects';
+import ProjectsShowcase from './components/ProjectsShowcase';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import ProjectModal from './components/ProjectModal';
@@ -14,7 +14,7 @@ import { Moon, Sun } from 'lucide-react';
 const sectionList = [
   { id: 'home', Component: Hero },
   { id: 'about', Component: About },
-  { id: 'projects', Component: Projects },
+  { id: 'projects', Component: ProjectsShowcase },
   { id: 'skills', Component: Skills },
   { id: 'journey', Component: Experience },
   { id: 'contact', Component: Contact },
@@ -78,7 +78,7 @@ function CursorGlow() {
 
   return (
     <div ref={glowRef} className="cursor-glow hidden md:block">
-      <div className="h-[300px] w-[300px] rounded-full bg-indigo-400/[0.06] dark:bg-indigo-500/[0.10] blur-3xl" />
+      <div className="h-[300px] w-[300px] rounded-full bg-amber-300/[0.15] blur-3xl dark:bg-amber-300/[0.26]" />
     </div>
   );
 }
@@ -98,7 +98,7 @@ function FloatingObjects() {
       {/* Spinning ring */}
       <div className="scene-3d absolute bottom-[20%] left-[5%]">
         <div className="rotate-3d-reverse" style={{ animationDuration: '30s' }}>
-          <div className="w-24 h-24 rounded-full border-[1.5px] border-purple-500/50 dark:border-purple-400/30" />
+          <div className="h-24 w-24 rounded-full border-[1.5px] border-amber-300/32 dark:border-amber-300/30" />
         </div>
       </div>
 
@@ -119,10 +119,10 @@ function FloatingObjects() {
         <div className="w-20 h-8 rounded-full glass-object opacity-38 dark:opacity-22" />
       </div>
 
-      {/* Cyan ring */}
+      {/* Gold ring */}
       <div className="scene-3d absolute top-[60%] left-[18%]">
         <div className="rotate-3d" style={{ animationDuration: '35s' }}>
-          <div className="w-14 h-14 rounded-full border-[1.5px] border-cyan-500/40 dark:border-cyan-400/25" />
+          <div className="h-14 w-14 rounded-full border-[1.5px] border-yellow-400/24 dark:border-yellow-300/22" />
         </div>
       </div>
 
@@ -136,7 +136,7 @@ function FloatingObjects() {
       {/* Large ring */}
       <div className="scene-3d absolute top-[42%] left-[2%]">
         <div className="rotate-3d" style={{ animationDuration: '40s' }}>
-          <div className="w-28 h-28 rounded-full border-[1.5px] border-indigo-400/35 dark:border-indigo-400/25" />
+          <div className="h-28 w-28 rounded-full border-[1.5px] border-orange-300/22 dark:border-orange-300/22" />
         </div>
       </div>
 
@@ -148,7 +148,7 @@ function FloatingObjects() {
       {/* Small ring — top right */}
       <div className="scene-3d absolute top-[3%] right-[3%]">
         <div className="rotate-3d-reverse" style={{ animationDuration: '25s' }}>
-          <div className="w-10 h-10 rounded-full border-[1.5px] border-rose-500/38 dark:border-rose-400/25" />
+          <div className="h-10 w-10 rounded-full border-[1.5px] border-yellow-300/22 dark:border-yellow-300/22" />
         </div>
       </div>
     </div>
@@ -160,20 +160,20 @@ function BackgroundEffects() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {/* Gradient orbs — reduced to 4 for performance */}
-      <div className="orb-1 absolute -top-48 -left-48 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-indigo-500/45 via-purple-400/30 to-transparent blur-3xl dark:from-indigo-500/30 dark:via-purple-400/22" />
-      <div className="orb-2 absolute top-[15%] -right-40 h-[550px] w-[550px] rounded-full bg-gradient-to-bl from-pink-400/38 via-rose-300/25 to-transparent blur-3xl dark:from-pink-500/25 dark:via-rose-400/18" />
-      <div className="orb-3 absolute bottom-[5%] left-[15%] h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-cyan-400/35 via-blue-300/22 to-transparent blur-3xl dark:from-cyan-500/25 dark:via-blue-400/18" />
-      <div className="orb-5 absolute top-[40%] left-[50%] h-[420px] w-[420px] rounded-full bg-gradient-to-tl from-violet-400/35 via-fuchsia-300/22 to-transparent blur-3xl dark:from-violet-500/22 dark:via-fuchsia-400/16" />
+      <div className="orb-1 absolute -top-48 -left-48 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-amber-300/40 via-yellow-200/22 to-transparent blur-3xl dark:from-amber-300/48 dark:via-yellow-200/28" />
+      <div className="orb-2 absolute top-[15%] -right-40 h-[550px] w-[550px] rounded-full bg-gradient-to-bl from-orange-300/28 via-amber-200/18 to-transparent blur-3xl dark:from-orange-400/38 dark:via-amber-200/28" />
+      <div className="orb-3 absolute bottom-[5%] left-[15%] h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-yellow-200/24 via-amber-100/14 to-transparent blur-3xl dark:from-amber-400/40 dark:via-yellow-200/24" />
+      <div className="orb-5 absolute top-[40%] left-[50%] h-[420px] w-[420px] rounded-full bg-gradient-to-tl from-amber-200/24 via-orange-200/14 to-transparent blur-3xl dark:from-orange-300/32 dark:via-amber-200/22" />
 
       {/* Spark particles — reduced to 5 */}
-      <div className="spark spark-1 top-[10%] left-[25%] bg-indigo-500/80 dark:bg-indigo-400/60" />
-      <div className="spark spark-2 top-[30%] left-[75%] bg-pink-500/70 dark:bg-pink-400/55" />
-      <div className="spark spark-3 top-[55%] left-[40%] bg-cyan-500/70 dark:bg-cyan-400/55" />
-      <div className="spark spark-5 top-[72%] left-[65%] bg-blue-500/70 dark:bg-blue-400/55" />
-      <div className="spark spark-9 top-[65%] left-[20%] bg-violet-500/70 dark:bg-violet-400/55" />
+      <div className="spark spark-1 top-[10%] left-[25%] bg-amber-500/55 dark:bg-amber-200/72" />
+      <div className="spark spark-2 top-[30%] left-[75%] bg-yellow-500/42 dark:bg-yellow-200/62" />
+      <div className="spark spark-3 top-[55%] left-[40%] bg-orange-400/40 dark:bg-orange-200/66" />
+      <div className="spark spark-5 top-[72%] left-[65%] bg-amber-300/36 dark:bg-amber-200/62" />
+      <div className="spark spark-9 top-[65%] left-[20%] bg-amber-600/36 dark:bg-orange-200/64" />
 
       {/* Dot grid overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(99,102,241,0.14)_1px,transparent_1px)] bg-[size:32px_32px] dark:bg-[radial-gradient(rgba(99,102,241,0.1)_1px,transparent_1px)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(180,140,55,0.09)_1px,transparent_1px)] bg-[size:32px_32px] dark:bg-[radial-gradient(rgba(251,146,60,0.16)_1px,transparent_1px)]" />
     </div>
   );
 }
@@ -189,7 +189,7 @@ function ThemeToggle({ theme, onToggle }) {
       {theme === 'dark' ? (
         <Sun className="h-5 w-5 text-amber-400" />
       ) : (
-        <Moon className="h-5 w-5 text-indigo-500" />
+        <Moon className="h-5 w-5 text-amber-700" />
       )}
     </button>
   );
@@ -222,7 +222,7 @@ export default function App() {
   const ActiveComponent = sectionList.find((s) => s.id === activeSection)?.Component || Hero;
 
   return (
-    <div className="relative min-h-screen bg-[#dde0ed] text-gray-900 transition-colors duration-500 dark:bg-[#08080f] dark:text-white">
+    <div className="relative min-h-screen bg-[#f2ebd7] text-stone-900 transition-colors duration-500 dark:bg-[#301c07] dark:text-white">
       <BackgroundEffects />
       <FloatingObjects />
       <CursorGlow />

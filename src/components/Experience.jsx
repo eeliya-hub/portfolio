@@ -15,8 +15,8 @@ const Experience = ({ portfolioData }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-indigo-500 dark:bg-indigo-400 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
+          <h2 className="bg-gradient-to-r from-amber-700 via-yellow-500 to-orange-500 bg-clip-text text-3xl font-bold tracking-tight text-transparent dark:from-amber-200 dark:via-yellow-100 dark:to-orange-200">
+            {typedTitle}<span className={`ml-0.5 inline-block h-[1em] w-[2px] align-middle ${titleDone ? 'animate-blink' : ''} bg-amber-500 dark:bg-amber-300`} />
           </h2>
           <p className="mt-2 min-h-[3rem] md:min-h-[1.75rem] text-gray-500 dark:text-gray-400">
             {typedSub}
@@ -25,7 +25,7 @@ const Experience = ({ portfolioData }) => {
 
         <div className="relative mt-10 space-y-0">
           {/* Vertical line — gradient */}
-          <div className="absolute left-5 top-3 bottom-3 w-px bg-gradient-to-b from-indigo-400/40 via-purple-400/30 to-transparent dark:from-indigo-500/20 dark:via-purple-500/15" />
+          <div className="absolute bottom-3 left-5 top-3 w-px bg-gradient-to-b from-amber-400/50 via-yellow-400/35 to-transparent dark:from-amber-300/25 dark:via-yellow-200/15" />
 
           {portfolioData.journey.map((item, index) => {
             const Icon = icons[index];
@@ -40,17 +40,17 @@ const Experience = ({ portfolioData }) => {
                 {/* Dot — glass circle */}
                 <motion.div
                   whileHover={{ scale: 1.15 }}
-                  className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full glass cursor-default transition-all duration-300 group-hover:shadow-lg group-hover:shadow-indigo-500/10"
+                  className="project-chip relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full cursor-default transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-500/10"
                 >
-                  <Icon className="h-4 w-4 text-indigo-500 dark:text-indigo-400" />
+                  <Icon className="h-4 w-4 text-amber-700 dark:text-amber-300" />
                 </motion.div>
 
                 <motion.div
                   whileHover={{ x: 4 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                  className="glass rounded-2xl p-4 flex-1 cursor-default transition-all duration-300"
+                  className="project-card flex-1 rounded-2xl p-4 cursor-default transition-all duration-300"
                 >
-                  <span className="inline-block rounded-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/10 px-2.5 py-1 text-[0.68rem] font-semibold text-indigo-600 dark:from-indigo-500/20 dark:to-purple-500/20 dark:text-indigo-400">
+                  <span className="inline-block rounded-lg bg-gradient-to-r from-amber-400/20 to-yellow-300/20 px-2.5 py-1 text-[0.68rem] font-semibold text-amber-700 dark:from-amber-400/18 dark:to-yellow-200/18 dark:text-amber-300">
                     {item.phase}
                   </span>
                   <h3 className="mt-2 text-[1rem] font-semibold text-gray-900 dark:text-white">
@@ -63,7 +63,7 @@ const Experience = ({ portfolioData }) => {
                     {item.bullets.map((bullet) => (
                       <span
                         key={bullet}
-                        className="glass-subtle rounded-lg px-2.5 py-1 text-[0.72rem] font-medium text-gray-500 transition-colors duration-200 hover:text-indigo-600 dark:text-gray-500 dark:hover:text-indigo-400"
+                        className="project-chip rounded-lg px-2.5 py-1 text-[0.72rem] font-medium text-stone-500 transition-colors duration-200 hover:text-amber-700 dark:text-stone-400 dark:hover:text-amber-300"
                       >
                         {bullet}
                       </span>

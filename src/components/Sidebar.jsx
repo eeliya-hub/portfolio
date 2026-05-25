@@ -42,7 +42,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
         onMouseLeave={handleLeave}
         animate={{ width: expanded ? 160 : 60 }}
         transition={{ type: 'spring', duration: 0.4, bounce: 0.1 }}
-        className="hidden md:flex fixed left-4 top-1/2 -translate-y-1/2 z-40 flex-col glass-strong rounded-2xl py-3 px-2 gap-1 overflow-hidden"
+        className="project-shell hidden md:flex fixed left-4 top-1/2 -translate-y-1/2 z-40 flex-col rounded-2xl py-3 px-2 gap-1 overflow-hidden"
       >
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
@@ -52,14 +52,14 @@ const Sidebar = ({ activeSection, onNavigate }) => {
               onClick={() => onNavigate(item.id)}
               className={`relative flex items-center gap-3 rounded-xl h-11 px-2.5 transition-all duration-200 whitespace-nowrap ${
                 isActive
-                  ? 'text-indigo-600 dark:text-indigo-400'
-                  : 'text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white'
+                  ? 'text-amber-700 dark:text-amber-300'
+                  : 'text-stone-500 hover:text-amber-800 dark:text-stone-400 dark:hover:text-amber-100'
               }`}
             >
               {isActive && (
                 <motion.div
                   layoutId="sidebar-pill"
-                  className="absolute inset-0 rounded-xl bg-indigo-50/80 dark:bg-indigo-500/[0.12] glass-subtle"
+                  className="project-chip absolute inset-0 rounded-xl"
                   transition={{ type: 'spring', duration: 0.4, bounce: 0.12 }}
                 />
               )}
@@ -77,7 +77,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
       </motion.aside>
 
       {/* Mobile bottom bar — floating */}
-      <nav className="fixed left-3 right-3 bottom-3 z-40 flex md:hidden items-center justify-around glass-strong rounded-2xl px-1 pb-[env(safe-area-inset-bottom)] pt-1">
+      <nav className="project-shell fixed left-3 right-3 bottom-3 z-40 flex md:hidden items-center justify-around rounded-2xl px-1 pb-[env(safe-area-inset-bottom)] pt-1">
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
           return (
@@ -86,14 +86,14 @@ const Sidebar = ({ activeSection, onNavigate }) => {
               onClick={() => onNavigate(item.id)}
               className={`relative flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-[0.6rem] font-medium transition-colors ${
                 isActive
-                  ? 'text-indigo-600 dark:text-indigo-400'
-                  : 'text-gray-400 dark:text-gray-500'
+                  ? 'text-amber-700 dark:text-amber-300'
+                  : 'text-stone-500 dark:text-stone-400'
               }`}
             >
               {isActive && (
                 <motion.div
                   layoutId="mobile-pill"
-                  className="absolute inset-0 rounded-xl bg-indigo-50/60 dark:bg-indigo-500/[0.08]"
+                  className="project-chip absolute inset-0 rounded-xl"
                   transition={{ type: 'spring', duration: 0.35, bounce: 0.1 }}
                 />
               )}
