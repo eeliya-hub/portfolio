@@ -114,7 +114,7 @@ const ProjectModal = ({ onClose, project }) => {
             {/* Header — title left, action icons center, close right */}
             <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-t-3xl glass-strong border-b border-white/20 dark:border-white/[0.06] px-5 py-4 sm:px-6">
               <div>
-                <p className="text-[0.68rem] font-semibold uppercase tracking-widest text-indigo-500/70 dark:text-indigo-400/60">
+                <p className="text-[0.68rem] font-semibold uppercase tracking-widest text-amber-700/80 dark:text-amber-300/70">
                   Project
                 </p>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -175,7 +175,7 @@ const ProjectModal = ({ onClose, project }) => {
                         {...linkProps}
                         onMouseEnter={() => setHoveredAction(action.label)}
                         onMouseLeave={() => setHoveredAction(null)}
-                        className={`flex h-9 w-9 items-center justify-center rounded-xl glass text-gray-500 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:text-indigo-600 dark:text-gray-400 dark:hover:text-indigo-400 ${!action.href ? 'opacity-40 cursor-not-allowed' : ''}`}
+                        className={`flex h-9 w-9 items-center justify-center rounded-xl glass text-gray-500 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:text-amber-700 dark:text-gray-400 dark:hover:text-amber-300 ${!action.href ? 'opacity-40 cursor-not-allowed' : ''}`}
                       >
                         <Icon className="h-4 w-4" />
                       </Tag>
@@ -215,18 +215,18 @@ const ProjectModal = ({ onClose, project }) => {
 
                 {/* Tech — big tags with icons */}
                 <div>
-                  <p className="mb-3 text-[0.68rem] font-semibold uppercase tracking-widest text-indigo-500/70 dark:text-indigo-400/60">
+                  <p className="mb-3 text-[0.68rem] font-semibold uppercase tracking-widest text-amber-700/80 dark:text-amber-300/70">
                     Tech stack
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((t) => {
                       const assetSrc = techAssetMap[t];
-                      const color = techBrandColors[t] || '#4f46e5';
+                      const color = techBrandColors[t] || '#f59e0b';
                       const isDark = ['#111827', '#0f172a', '#003b57', '#092e20'].includes(color);
                       return (
                         <span
                           key={t}
-                          className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-gray-700 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-[0_0_0_1px_rgba(99,102,241,0.45),0_8px_24px_rgba(79,70,229,0.12)] dark:text-gray-200 dark:hover:shadow-[0_0_0_1px_rgba(129,140,248,0.4),0_8px_24px_rgba(129,140,248,0.14)]"
+                          className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium text-gray-700 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-105 hover:shadow-[0_0_0_1px_rgba(245,158,11,0.4),0_8px_24px_rgba(217,119,6,0.12)] dark:text-gray-200 dark:hover:shadow-[0_0_0_1px_rgba(251,191,36,0.28),0_8px_24px_rgba(251,191,36,0.14)]"
                           style={{
                             background: `linear-gradient(to bottom right, ${color}${isDark ? '18' : '12'}, ${color}${isDark ? '28' : '20'})`,
                             border: `1px solid ${isDark ? 'rgba(255,255,255,0.12)' : `${color}25`}`,
@@ -252,7 +252,7 @@ const ProjectModal = ({ onClose, project }) => {
               <div className="flex flex-col">
                 {/* Category + Overview */}
                 <div>
-                  <span className="inline-block rounded-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/10 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-wider text-indigo-600 dark:from-indigo-500/20 dark:to-purple-500/20 dark:text-indigo-400">
+                  <span className="inline-block rounded-lg bg-gradient-to-r from-amber-400/20 to-yellow-300/20 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-wider text-amber-700 dark:from-amber-400/18 dark:to-yellow-200/18 dark:text-amber-300">
                     {project.category}
                   </span>
                   <h4 className="mt-3 text-lg font-semibold text-gray-900 dark:text-white">
@@ -265,7 +265,7 @@ const ProjectModal = ({ onClose, project }) => {
 
                 {/* Features */}
                 <div className="mt-auto pt-5">
-                  <p className="mb-3 text-[0.68rem] font-semibold uppercase tracking-widest text-indigo-500/70 dark:text-indigo-400/60">
+                  <p className="mb-3 text-[0.68rem] font-semibold uppercase tracking-widest text-amber-700/80 dark:text-amber-300/70">
                     Highlights
                   </p>
                   <div className="space-y-2">

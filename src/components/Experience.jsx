@@ -15,8 +15,8 @@ const Experience = ({ portfolioData }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent dark:from-white dark:to-white/60">
-            {typedTitle}<span className={`inline-block w-[2px] h-[1em] bg-gray-800 dark:bg-white/80 ml-0.5 align-middle ${titleDone ? 'animate-blink' : ''}`} />
+          <h2 className="bg-gradient-to-r from-amber-700 via-yellow-500 to-orange-500 bg-clip-text text-3xl font-bold tracking-tight text-transparent dark:from-amber-200 dark:via-yellow-100 dark:to-orange-200">
+            {typedTitle}<span className={`ml-0.5 inline-block h-[1em] w-[2px] align-middle ${titleDone ? 'animate-blink' : ''} bg-amber-500 dark:bg-amber-300`} />
           </h2>
           <p className="mt-2 min-h-[3rem] md:min-h-[1.75rem] text-gray-500 dark:text-gray-400">
             {typedSub}
@@ -25,7 +25,7 @@ const Experience = ({ portfolioData }) => {
 
         <div className="relative mt-10 space-y-0">
           {/* Vertical line — gradient */}
-          <div className="absolute bottom-3 left-5 top-3 w-px bg-gradient-to-b from-black/18 via-black/8 to-transparent dark:from-white/18 dark:via-white/10" />
+          <div className="absolute bottom-3 left-5 top-3 w-px bg-gradient-to-b from-amber-400/50 via-yellow-400/35 to-transparent dark:from-amber-300/25 dark:via-yellow-200/15" />
 
           {portfolioData.journey.map((item, index) => {
             const Icon = icons[index];
@@ -40,17 +40,17 @@ const Experience = ({ portfolioData }) => {
                 {/* Dot — glass circle */}
                 <motion.div
                   whileHover={{ scale: 1.15 }}
-                  className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full glass cursor-default transition-all duration-300 group-hover:shadow-lg group-hover:shadow-black/10 dark:group-hover:shadow-black/20"
+                  className="project-chip relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full cursor-default transition-all duration-300 group-hover:shadow-lg group-hover:shadow-amber-500/10"
                 >
-                  <Icon className="h-4 w-4 text-gray-700 dark:text-white/75" />
+                  <Icon className="h-4 w-4 text-amber-700 dark:text-amber-300" />
                 </motion.div>
 
                 <motion.div
                   whileHover={{ x: 4 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                  className="glass rounded-2xl p-4 flex-1 cursor-default transition-all duration-300"
+                  className="project-card flex-1 rounded-2xl p-4 cursor-default transition-all duration-300"
                 >
-                  <span className="inline-block rounded-lg bg-black/5 px-2.5 py-1 text-[0.68rem] font-semibold text-gray-700 dark:bg-white/[0.08] dark:text-white/70">
+                  <span className="inline-block rounded-lg bg-gradient-to-r from-amber-400/20 to-yellow-300/20 px-2.5 py-1 text-[0.68rem] font-semibold text-amber-700 dark:from-amber-400/18 dark:to-yellow-200/18 dark:text-amber-300">
                     {item.phase}
                   </span>
                   <h3 className="mt-2 text-[1rem] font-semibold text-gray-900 dark:text-white">
@@ -63,7 +63,7 @@ const Experience = ({ portfolioData }) => {
                     {item.bullets.map((bullet) => (
                       <span
                         key={bullet}
-                        className="glass-subtle rounded-lg px-2.5 py-1 text-[0.72rem] font-medium text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white"
+                        className="project-chip rounded-lg px-2.5 py-1 text-[0.72rem] font-medium text-stone-500 transition-colors duration-200 hover:text-amber-700 dark:text-stone-400 dark:hover:text-amber-300"
                       >
                         {bullet}
                       </span>
