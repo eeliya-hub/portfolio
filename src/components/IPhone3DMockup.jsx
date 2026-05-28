@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { motion, useMotionValueEvent, useSpring, useTime, useTransform } from 'motion/react';
+import { motion, useMotionValue, useMotionValueEvent, useSpring, useTime, useTransform } from 'motion/react';
 
 function yawFromPointer(event, element, strength) {
   const rect = element.getBoundingClientRect();
@@ -9,35 +8,32 @@ function yawFromPointer(event, element, strength) {
 }
 
 export default function IPhone3DMockup({ screenshot, scrollProgress }) {
-  const [mouseYaw, setMouseYaw] = useState(0);
-  const [scrollState, setScrollState] = useState({ yaw: -6, yOffset: 10 });
+  const mouseYaw = useMotionValue(0);
+  const scrollYaw = useMotionValue(-6);
+  const scrollYOffset = useMotionValue(10);
   const time = useTime();
   const idleYaw = useTransform(time, (value) => Math.sin(value / 1650) * 4.6);
   const idleLift = useTransform(time, (value) => Math.sin(value / 1450) * 5.25);
 
   useMotionValueEvent(scrollProgress, 'change', (latest) => {
-    setScrollState({
-      yaw: -7 + latest * 14,
-      yOffset: 10 - Math.sin(latest * Math.PI) * 8,
-    });
+    scrollYaw.set(-7 + latest * 14);
+    scrollYOffset.set(10 - Math.sin(latest * Math.PI) * 8);
   });
 
   const rotateY = useSpring(
-    useTransform(() => scrollState.yaw + mouseYaw + idleYaw.get()),
+    useTransform(() => scrollYaw.get() + mouseYaw.get() + idleYaw.get()),
     { stiffness: 120, damping: 26, mass: 1 }
   );
   const translateY = useSpring(
-    useTransform(() => scrollState.yOffset + idleLift.get()),
+    useTransform(() => scrollYOffset.get() + idleLift.get()),
     { stiffness: 110, damping: 24, mass: 1.05 }
   );
 
   return (
     <div
       className="projects-showcase__scene"
-      onMouseMove={(event) => setMouseYaw(yawFromPointer(event, event.currentTarget, 12))}
-      onMouseLeave={() => {
-        setMouseYaw(0);
-      }}
+      onPointerMove={(event) => mouseYaw.set(yawFromPointer(event, event.currentTarget, 12))}
+      onPointerLeave={() => mouseYaw.set(0)}
     >
       <motion.div
         className="projects-showcase__device iphone-mockup"

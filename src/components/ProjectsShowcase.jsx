@@ -27,7 +27,7 @@ const shortDescriptionByProject = {
 };
 
 function projectSubset(portfolioProjects = []) {
-  const ids = ['traverse', 'weather-app', 'alumni-api', 'sky-health', 'prem-predictor'];
+  const ids = ['traverse', 'weather-app', 'sky-health', 'alumni-api', 'prem-predictor'];
 
   return portfolioProjects
     .filter((project) => ids.includes(project.id))
@@ -207,7 +207,7 @@ export default function ProjectsShowcase({ portfolioData, onOpenProject }) {
                           opacity: 0,
                         })}
                         transition={{
-                          duration: 0.42,
+                          duration: 0.34,
                           ease: 'easeOut',
                         }}
                       >
@@ -252,9 +252,9 @@ export default function ProjectsShowcase({ portfolioData, onOpenProject }) {
                         })}
                         transition={{
                           type: 'spring',
-                          stiffness: 120,
-                          damping: 24,
-                          mass: 1,
+                          stiffness: 155,
+                          damping: 23,
+                          mass: 0.86,
                         }}
                       >
                         {activePlatform === 'mobile' ? (

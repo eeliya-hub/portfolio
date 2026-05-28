@@ -14,9 +14,9 @@ export const portfolioData = {
     name: 'Eeliya Nayeri',
     role: 'Computer Science Student • Developer',
     intro:
-      'Building modern apps, backend systems, and product-like interfaces with a focus on clean UI, responsive interactions, and software that feels polished from the first click.',
-    status: 'Designing thoughtful interfaces and practical systems.',
-    focus: ['Clean UI', 'App Lifecycle', 'Backend Systems', 'Product Experiences'],
+      'I build product-minded software with a strong focus on interface quality, backend structure, and experiences that feel polished, realistic, and ready for real use.',
+    status: 'Most interested in product thinking, interface detail, and systems that feel commercially believable.',
+    focus: ['Modern Interfaces', 'UX Focus', 'Structured Engineering', 'Product Thinking'],
   },
   heroStats: [
     {
@@ -54,37 +54,37 @@ export const portfolioData = {
   ],
   about: {
     summary:
-      'I am a Computer Science student and developer interested in software that feels refined, useful, and intentional. My work leans toward modern interfaces, mobile and web app development, backend APIs, and product-style experiences that connect clean visuals with solid engineering.',
+      'I sit somewhere between engineering, design, and product thinking. I like building software that feels considered from both sides: the user experience people notice and the structure underneath that makes it reliable.',
     education: {
       institution: 'University of Westminster',
       degree: 'BSc Computer Science',
       result: '1st Class (Predicted)',
     },
     highlights: [
-      { label: 'Demonstrated Strength', value: 'Turning ideas into polished, working apps' },
-      { label: 'Built Through', value: 'Flutter, React, Node.js, Express, Firebase, and SwiftUI' },
-      { label: 'What I Show Best', value: 'Clean UI, structured backend logic, and product thinking' },
+      { label: 'Strongest When', value: 'Shaping both the product feel and the implementation structure' },
+      { label: 'Works Best With', value: 'Modern tooling, fast iteration, and a clear quality bar' },
+      { label: 'What Stands Out', value: 'Realism, usability, and presentation quality' },
     ],
     focusAreas: [
       {
         title: 'Frontend Systems',
         description:
-          'Building interfaces that feel sharp, fast, and coherent across desktop and mobile.',
+          'Interfaces with strong hierarchy, motion, and responsiveness that feel intentional rather than student-built.',
       },
       {
         title: 'Backend Services',
         description:
-          'Designing APIs and service layers that keep application flows simple and dependable.',
+          'APIs and application flows structured to support real product behaviour, not just technical requirements.',
       },
       {
-        title: 'Mobile Interfaces',
+        title: 'Mobile Experiences',
         description:
-          'Exploring app experiences with Flutter and SwiftUI where motion and usability matter.',
+          'Travel, utility, and dashboard-style app experiences where polish and flow matter.',
       },
       {
         title: 'Product Thinking',
         description:
-          'Treating portfolio work and side projects like real software products, not demos.',
+          'Treating side projects like believable products with identity, use cases, and commercial realism.',
       },
     ],
   },
