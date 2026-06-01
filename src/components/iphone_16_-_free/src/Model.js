@@ -6,7 +6,7 @@ Source: https://sketchfab.com/3d-models/iphone-16-free-d58591e88a824dfd8cef0af61
 Title: iPhone 16 - Free
 */
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Model(props) {

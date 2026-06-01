@@ -6,7 +6,7 @@ Source: https://sketchfab.com/3d-models/computer-monitor-lowpoly-model-1d4ee42ed
 Title: Computer Monitor Lowpoly Model
 */
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Model(props) {

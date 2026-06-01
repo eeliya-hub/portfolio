@@ -51,6 +51,12 @@ export default function MacBook3DMockup({ screenshot, scrollProgress }) {
             <img
               src={screenshot}
               alt=""
+              width="1440"
+              height="796"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              draggable="false"
               className="monitor-mockup__screen"
             />
             <div className="monitor-mockup__screen-shadow" />

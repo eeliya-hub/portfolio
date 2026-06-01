@@ -2,13 +2,20 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import {
   ArrowRight,
+  BadgeCheck,
+  FolderGit2,
   Mail,
   MapPin,
   Send,
 } from 'lucide-react';
 import { useTypewriter } from '../utils/useTypewriter';
 
-const defaultIcons = { Email: Mail, Location: MapPin };
+const contactIcons = {
+  Email: Mail,
+  GitHub: FolderGit2,
+  LinkedIn: BadgeCheck,
+  Location: MapPin,
+};
 
 const Contact = ({ portfolioData }) => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -70,7 +77,7 @@ const Contact = ({ portfolioData }) => {
             className="space-y-4"
           >
             {portfolioData.contact.methods.map((method) => {
-              const Icon = defaultIcons[method.label];
+              const Icon = contactIcons[method.label];
               const Wrapper = method.href ? 'a' : 'div';
               const wrapperProps = method.href
                 ? {
@@ -89,14 +96,9 @@ const Contact = ({ portfolioData }) => {
                     {...wrapperProps}
                     className="project-card flex gap-4 rounded-2xl p-5 cursor-pointer no-underline"
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400/20 to-yellow-300/20 dark:from-amber-400/18 dark:to-yellow-200/18">
-                      {method.iconLight && method.iconDark ? (
-                        <>
-                          <img src={method.iconLight} alt="" aria-hidden="true" className="h-5 w-5 object-contain block dark:hidden" />
-                          <img src={method.iconDark} alt="" aria-hidden="true" className="h-5 w-5 object-contain hidden dark:block" />
-                        </>
-                      ) : Icon ? (
-                          <Icon className="h-5 w-5 text-amber-700 dark:text-amber-300" />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-300/35 bg-gradient-to-br from-amber-400/20 via-yellow-300/14 to-orange-300/18 text-amber-700 shadow-inner shadow-white/40 dark:border-amber-200/10 dark:from-amber-400/18 dark:via-yellow-200/10 dark:to-orange-300/12 dark:text-amber-300 dark:shadow-white/5">
+                      {Icon ? (
+                        <Icon className="h-5 w-5" strokeWidth={1.85} />
                       ) : null}
                     </div>
                     <div>

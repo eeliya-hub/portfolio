@@ -56,6 +56,12 @@ export default function IPhone3DMockup({ screenshot, scrollProgress }) {
             <img
               src={screenshot}
               alt=""
+              width="720"
+              height="1558"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              draggable="false"
               className="iphone-mockup__screen"
             />
             <div className="iphone-mockup__screen-shadow" />

@@ -356,16 +356,12 @@ export const portfolioData = {
         value: 'eeliya-hub',
         note: 'Repositories and project code',
         href: 'https://github.com/eeliya-hub',
-        iconLight: `${base}projectImages/githublight.png`,
-        iconDark: `${base}projectImages/githubdark.png`,
       },
       {
         label: 'LinkedIn',
         value: 'eeliya',
         note: 'Professional profile and network',
         href: 'https://www.linkedin.com/in/eeliya/',
-        iconLight: `${base}projectImages/linkedinLight.png`,
-        iconDark: `${base}projectImages/linkedinDark.png`,
       },
       {
         label: 'Location',

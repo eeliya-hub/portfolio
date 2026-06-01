@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, useScroll } from 'motion/react';
 import { ArrowLeft, ArrowRight, Monitor, Smartphone } from 'lucide-react';
 
@@ -10,12 +10,14 @@ import './projectsShowcase.css';
 
 const base = import.meta.env.BASE_URL;
 
+const focusedProjectOrder = ['traverse', 'weather-app', 'sky-health', 'alumni-api', 'prem-predictor'];
+
 const screenshotByProject = {
-  traverse: `${base}screenshots/traverse.png`,
-  'weather-app': `${base}screenshots/weather.png`,
-  'alumni-api': `${base}screenshots/alumni-api.png`,
-  'sky-health': `${base}screenshots/sky.png`,
-  'prem-predictor': `${base}screenshots/PremPred1.png`,
+  traverse: `${base}screenshots/traverse-model.jpg`,
+  'weather-app': `${base}screenshots/weather-model.jpg`,
+  'sky-health': `${base}screenshots/sky-model.jpg`,
+  'alumni-api': `${base}screenshots/alumni-api-model.jpg`,
+  'prem-predictor': `${base}screenshots/prem-predictor-model.jpg`,
 };
 
 const shortDescriptionByProject = {
@@ -27,10 +29,11 @@ const shortDescriptionByProject = {
 };
 
 function projectSubset(portfolioProjects = []) {
-  const ids = ['traverse', 'weather-app', 'sky-health', 'alumni-api', 'prem-predictor'];
+  const projectsById = new Map(portfolioProjects.map((project) => [project.id, project]));
 
-  return portfolioProjects
-    .filter((project) => ids.includes(project.id))
+  return focusedProjectOrder
+    .map((id) => projectsById.get(id))
+    .filter(Boolean)
     .map((project) => ({
       id: project.id,
       title: project.title,
@@ -65,6 +68,26 @@ export default function ProjectsShowcase({ portfolioData, onOpenProject }) {
     target: sectionRef,
     offset: ['start end', 'end start'],
   });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+
+    const preloaders = projects.map((project) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.fetchPriority = project.id === 'traverse' || project.id === 'sky-health' ? 'high' : 'low';
+      image.src = project.screenshot;
+      image.decode?.().catch(() => undefined);
+      return image;
+    });
+
+    return () => {
+      preloaders.forEach((image) => {
+        image.onload = null;
+        image.onerror = null;
+      });
+    };
+  }, [projects]);
 
   if (!projects.length) return null;
 

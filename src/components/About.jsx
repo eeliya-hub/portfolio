@@ -41,11 +41,11 @@ const About = ({ portfolioData }) => {
       teaser: 'Who I am',
       icon: UserRound,
       summary:
-        'I come from a mix of Persian and British influence, which probably explains why I care about communication, presentation, and how work is perceived as much as the implementation itself.',
+        'Born in Iran but raised in the United Kingdom, my passion for software development was sparked by a desire to create and understand the digital world around me. Moving to the UK at a young age, fueled my natural ability to adapt and learn quickly, which has been a cornerstone of my journey in tech. I thrive on diving deep into projects, iterating on details, and pushing myself to create work that feels polished and credible.',
       points: [
-        'Retail and student life made me adaptable, socially aware, and comfortable across different environments.',
-        'I naturally over-iterate on details because I want the end result to feel credible, polished, and taken seriously.',
-        'Long term, I want to build software that feels bigger than coursework and closer to real products people would choose.',
+        'I am very detail-oriented and have a strong desire to create modern and user friendly experiences.',
+        'Through my experiences in retail and group projects at university level, I have developed strong communication and teamwork skills, and I am always eager to learn from others and contribute my own ideas.',
+        'From a young age, I have always taken leadership roles in group settings and have a natural ability to guide, organise, and lead teams.',
       ],
       mode: 'list',
     },
@@ -57,8 +57,8 @@ const About = ({ portfolioData }) => {
       teaser: 'What I enjoy building',
       icon: Heart,
       summary:
-        'A lot of my interests revolve around movement, systems, and culture, so travel, aviation, football, geopolitics, internet culture, and design all end up feeding the way I think.',
-      points: ['Travel & aviation', 'Football & predictions', 'Geopolitics', 'AI & design'],
+        'I have a wide range of interests that often intersect with my work. I am particularly passionate about travel and aviation, football and sports, which can be seen in some of the personal projects that I have undertaken.',
+      points: ['Travel & aviation', 'Football & Sports', 'Geopolitics', 'AI & design'],
       mode: 'chips',
     },
     {
@@ -69,7 +69,7 @@ const About = ({ portfolioData }) => {
       teaser: 'What comes through in my work',
       icon: Code2,
       summary:
-        'My edge is usually a mix of product instinct, aesthetic sensitivity, and technical adaptability. I care about architecture and scalability, but I also care a lot about whether the result feels premium.',
+        'My edge is usually a mix of product instinct, aesthetic sensitivity, and technical adaptability. I care about architecture and scalability, but my primary focus is on creating user-friendly and visually appealing experiences.',
       points: ['Product instinct', 'UI polish', 'Adaptability', 'System thinking'],
       note: highlights.map((item) => item.value).slice(0, 2),
       mode: 'chips',
