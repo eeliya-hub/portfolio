@@ -1,5 +1,6 @@
 .projects-showcase {
   position: relative;
+  width: 100%;
   min-height: 0;
   display: flex;
   align-items: center;
@@ -173,7 +174,7 @@
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   align-items: center;
   gap: clamp(1.25rem, 3vw, 2.5rem);
-  min-height: clamp(28rem, 52vw, 34rem);
+  min-height: clamp(25rem, 46vw, 34rem);
   padding: clamp(1.15rem, 2.2vw, 1.85rem);
   border-radius: 2.25rem;
   background:
@@ -348,20 +349,8 @@
 }
 
 @media (min-width: 1024px) {
-  .projects-showcase {
-    min-height: calc(100dvh - 8rem);
-  }
-
   .projects-showcase__platform-toggle {
     margin-top: 0.78rem;
-  }
-
-  .projects-showcase__single {
-    min-height: calc(100dvh - 8rem);
-  }
-
-  .projects-showcase__single-frame {
-    align-self: center;
   }
 }
 
@@ -387,6 +376,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  min-width: 0;
   min-height: 100%;
   padding-top: 0;
   padding-right: 0.5rem;
@@ -397,6 +387,7 @@
 .projects-showcase__device-wrapper {
   width: 100%;
   max-width: 36rem;
+  min-width: 0;
   min-height: 100%;
   margin: 0 auto;
   display: flex;
@@ -407,7 +398,7 @@
 .projects-showcase__scene {
   width: 100%;
   min-height: 100%;
-  max-width: 36rem;
+  max-width: 100%;
   perspective: 1600px;
   display: flex;
   align-items: center;
@@ -429,8 +420,8 @@
 }
 
 .iphone-mockup {
-  height: 27.5rem;
-  width: calc(27.5rem * 0.5 - 2px);
+  width: min(100%, clamp(10.5rem, 19vw, 13.75rem));
+  height: auto;
   aspect-ratio: 0.5 / 1;
   margin-top: -1.45rem;
 }
@@ -587,8 +578,8 @@
 }
 
 .monitor-mockup {
-  height: 25.75rem;
-  width: auto;
+  width: min(100%, clamp(22rem, 34vw, 30.4rem));
+  height: auto;
   aspect-ratio: 1.18 / 1;
   transform-style: preserve-3d;
 }
@@ -768,6 +759,88 @@
   transform: translateZ(-24px);
 }
 
+@media (max-width: 980px) and (min-width: 769px) {
+  .projects-showcase__single-layout {
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1fr);
+    gap: clamp(0.9rem, 2vw, 1.35rem);
+    min-height: clamp(23rem, 56vw, 29rem);
+    padding: clamp(0.95rem, 2vw, 1.35rem);
+  }
+
+  .projects-showcase__single-copy {
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+  }
+
+  .projects-showcase__single-title {
+    font-size: clamp(1.45rem, 3vw, 2.15rem);
+  }
+
+  .projects-showcase__single-description {
+    font-size: 0.86rem;
+  }
+
+  .projects-showcase__device-shell {
+    padding: 0;
+  }
+
+  .projects-showcase__control--side {
+    display: none;
+  }
+
+  .projects-showcase__nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 0.85rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .projects-showcase__footer-action {
+    display: none;
+  }
+
+  .iphone-mockup {
+    width: min(100%, clamp(9rem, 21vw, 11.5rem));
+    margin-top: -0.9rem;
+  }
+
+  .monitor-mockup {
+    width: min(100%, clamp(17.5rem, 42vw, 24rem));
+  }
+}
+
+@media (max-height: 760px) and (min-width: 769px) {
+  .projects-showcase__single-frame {
+    gap: 0.9rem;
+  }
+
+  .projects-showcase__description {
+    min-height: 1.35rem;
+  }
+
+  .projects-showcase__single-layout {
+    min-height: clamp(22rem, 68vh, 28rem);
+  }
+
+  .iphone-mockup {
+    width: min(100%, clamp(9rem, 16vw, 12rem));
+    margin-top: -0.9rem;
+  }
+
+  .monitor-mockup {
+    width: min(100%, clamp(18rem, 30vw, 25rem));
+  }
+
+  .monitor-mockup__stem {
+    height: 4.1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .projects-showcase {
     align-items: stretch;
@@ -886,13 +959,14 @@
   }
 
   .iphone-mockup {
-    height: clamp(16rem, 45vw, 20rem);
-    width: auto;
+    width: min(100%, clamp(8rem, 25vw, 10rem));
+    height: auto;
+    margin-top: -0.8rem;
   }
 
   .monitor-mockup {
-    height: clamp(14rem, 40vw, 18rem);
-    width: auto;
+    width: min(100%, clamp(16rem, 58vw, 23rem));
+    height: auto;
   }
 }
 
@@ -1030,22 +1104,13 @@
   }
 
   .iphone-mockup {
-    height: clamp(14rem, 42vw, 18rem);
-    width: auto;
-  }
-
-  .monitor-mockup {
-    height: clamp(12rem, 38vw, 16rem);
-    width: auto;
-  }
-
-  .iphone-mockup {
-    height: min(24rem, 72vw);
+    width: min(100%, clamp(8rem, 36vw, 9.75rem));
+    height: auto;
     margin-top: -0.8rem;
   }
 
   .monitor-mockup {
-    height: min(22.5rem, 68vw);
-    width: auto;
+    width: min(100%, clamp(15rem, 72vw, 22rem));
+    height: auto;
   }
 }

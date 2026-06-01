@@ -327,7 +327,7 @@ export const portfolioData = {
       bullets: ['Tech sector insight', 'Industry research', 'Professional exposure'],
     },
     {
-      phase: 'Sep 2023 – Present',
+      phase: 'Sep 2023 – Jul 2026',
       title: 'BSc Computer Science — University of Westminster',
       summary:
         'Currently studying BSc Computer Science (Honours), covering software development, computer system fundamentals and database systems. On track for a First-Class Honours (expected 2026).',

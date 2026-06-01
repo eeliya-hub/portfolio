@@ -62,6 +62,32 @@
   animation: blink 1s step-end infinite;
 }
 
+.app-main {
+  padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
+}
+
+.sidebar-desktop-nav {
+  display: none;
+}
+
+.sidebar-bottom-nav {
+  display: flex;
+}
+
+@media (min-width: 1720px) {
+  .app-main {
+    padding-bottom: 0;
+  }
+
+  .sidebar-desktop-nav {
+    display: flex;
+  }
+
+  .sidebar-bottom-nav {
+    display: none;
+  }
+}
+
 /* ─── Background orb animations ─── */
 @keyframes float-orb {
   0%, 100% { transform: translate(0, 0) scale(1); }

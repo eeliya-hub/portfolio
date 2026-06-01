@@ -42,7 +42,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
         onMouseLeave={handleLeave}
         animate={{ width: expanded ? 160 : 60 }}
         transition={{ type: 'spring', duration: 0.4, bounce: 0.1 }}
-        className="project-shell hidden md:flex fixed left-4 top-1/2 -translate-y-1/2 z-40 flex-col rounded-2xl py-3 px-2 gap-1 overflow-hidden"
+        className="sidebar-desktop-nav project-shell fixed left-4 top-1/2 -translate-y-1/2 z-40 flex-col rounded-2xl py-3 px-2 gap-1 overflow-hidden"
       >
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
@@ -77,7 +77,7 @@ const Sidebar = ({ activeSection, onNavigate }) => {
       </motion.aside>
 
       {/* Mobile bottom bar — floating */}
-      <nav className="project-shell fixed left-3 right-3 bottom-3 z-40 flex md:hidden items-center justify-around rounded-2xl px-1 pb-[env(safe-area-inset-bottom)] pt-1">
+      <nav className="sidebar-bottom-nav project-shell fixed bottom-3 left-3 right-3 z-40 mx-auto max-w-[34rem] items-center justify-around rounded-2xl px-1 pb-[env(safe-area-inset-bottom)] pt-1 sm:bottom-4 sm:left-6 sm:right-6">
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
           return (

@@ -234,7 +234,7 @@ export default function App() {
       />
 
       {/* Section content with AnimatePresence transitions */}
-      <main className="relative z-10 min-h-screen pb-24 md:pb-0">
+      <main className="app-main relative z-10 min-h-screen">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSection}
